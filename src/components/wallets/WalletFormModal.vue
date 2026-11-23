@@ -58,7 +58,13 @@ watch(
 
 function onBalanceInput(e) {
   const digits = e.target.value.replace(/\D/g, "");
-  form.balanceText = digits ? Number(digits).toLocaleString("id-ID") : "";
+
+  const formatted = digits
+    ? Number(digits).toLocaleString("id-ID")
+    : "";
+
+  form.balanceText = formatted;
+  e.target.value = formatted;
 }
 
 function submit() {
@@ -134,7 +140,7 @@ function remove() {
       </label>
 
       <label class="block">
-        <span class="text-label-md">Saldo awal</span>
+        <span class="text-label-md">Saldo</span>
         <div
           class="mt-1 flex items-center rounded-lg border border-outline-variant px-4 focus-within:border-primary"
         >

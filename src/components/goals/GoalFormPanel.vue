@@ -28,7 +28,11 @@ const saved = computed(() => goalsWithProgress.value.find((x) => x.id === props.
 
 function onTargetInput(e) {
   const digits = e.target.value.replace(/\D/g, '')
-  form.targetText = digits ? Number(digits).toLocaleString('id-ID') : ''
+  const formatted = digits
+    ? Number(digits).toLocaleString("id-ID")
+    : "";
+  form.targetText = formatted;
+  e.target.value = formatted;
 }
 const applyPreset = (p) => Object.assign(form, { name: p.name, icon: p.icon, color: p.color })
 

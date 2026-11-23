@@ -70,7 +70,9 @@ watch(() => form.type, ensureCategory);
 
 function onAmountInput(e) {
   const digits = e.target.value.replace(/\D/g, "");
-  form.amountText = digits ? Number(digits).toLocaleString("id-ID") : "";
+  const formatted = digits ? Number(digits).toLocaleString("id-ID") : "";
+  form.amountText = formatted;
+  e.target.value = formatted;
 }
 
 async function submit() {

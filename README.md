@@ -176,7 +176,3 @@ Folder `dist/` berisi situs statis yang bisa di-deploy ke hosting statis mana pu
 | `Access blocked` / app belum diverifikasi | Tambahkan akun Anda ke *Test users* di OAuth consent screen. |
 | Error 403 saat membuat/mencari spreadsheet | Pastikan **Google Sheets API** dan **Google Drive API** sudah aktif di proyek yang sama dengan Client ID. |
 | Data tidak berubah setelah update kode | Service worker lama masih aktif. Hard refresh atau *Unregister* service worker di DevTools → Application. |
-
-## Lisensi
-
-Belum ditentukan. Tambahkan berkas `LICENSE` sesuai kebutuhan proyek Anda.

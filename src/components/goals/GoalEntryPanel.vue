@@ -26,7 +26,12 @@ const quick = computed(() =>
 const setAmount = (n) => { form.amountText = n > 0 ? Number(n).toLocaleString('id-ID') : '' }
 function onAmountInput(e) {
   const digits = e.target.value.replace(/\D/g, '')
-  form.amountText = digits ? Number(digits).toLocaleString('id-ID') : ''
+  const formatted = digits
+    ? Number(digits).toLocaleString("id-ID")
+    : "";
+
+  form.amountText = formatted;
+  e.target.value = formatted;
 }
 
 function submit() {
