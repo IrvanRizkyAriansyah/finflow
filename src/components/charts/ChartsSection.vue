@@ -14,7 +14,7 @@ const { hidden } = useBalanceVisibility()
 </script>
 
 <template>
-  <section class="space-y-gutter-mobile md:space-y-gutter" aria-label="Analitik keuangan">
+  <section class="space-y-gutter-mobile md:space-y-gutter w-full min-w-0" :aria-label="$t('charts.analytics')">
     <div
       v-if="isLoading && !transactions.length"
       class="grid gap-gutter-mobile md:grid-cols-2 md:gap-gutter" aria-busy="true"
@@ -30,20 +30,20 @@ const { hidden } = useBalanceVisibility()
       <MonthSummary />
 
       <div class="grid gap-gutter-mobile md:grid-cols-2 md:gap-gutter">
-        <ChartCard title="Pengeluaran per kategori" :subtitle="monthSummary.label">
+        <ChartCard :title="$t('charts.byCategory')" :subtitle="monthSummary.label">
           <p v-if="!categoryBreakdown.segments.length" class="py-10 text-center text-body-sm text-on-surface-variant">
-            Belum ada pengeluaran bulan ini.
+            {{$t('charts.emptyMonth')}}
           </p>
           <DonutChart v-else :segments="categoryBreakdown.segments" :total="categoryBreakdown.total" :hidden="hidden" />
         </ChartCard>
 
-        <ChartCard title="Arus kas" subtitle="6 bulan terakhir">
+        <ChartCard :title="$t('charts.cashFlow')" subtitle="6 bulan terakhir">
           <CashFlowChart :months="monthlyFlow" :hidden="hidden" />
         </ChartCard>
 
-        <ChartCard class="md:col-span-2" title="Tren saldo" subtitle="30 hari terakhir">
+        <ChartCard class="md:col-span-2" :title="$t('charts.balanceTrend')" subtitle="30 hari terakhir">
           <p v-if="!transactions.length" class="py-10 text-center text-body-sm text-on-surface-variant">
-            Catat transaksi pertama Anda untuk melihat tren saldo.
+            {{$t('charts.emptyTrend')}}
           </p>
           <BalanceTrendChart v-else :points="balanceTrend" :hidden="hidden" />
         </ChartCard>

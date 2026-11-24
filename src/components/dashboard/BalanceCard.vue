@@ -11,7 +11,7 @@ const { hidden, toggle } = useBalanceVisibility()
 <template>
   <section class="rounded-xl bg-primary p-6 text-on-primary shadow-sm">
     <div class="flex items-center justify-between">
-      <p class="text-label-md text-on-primary-container">Total Balance</p>
+      <p class="text-label-md text-on-primary-container">{{$t('dash.totalBalance')}}</p>
       <button
         class="rounded-full p-2 hover:bg-white/10 flex"
         :aria-label="hidden ? 'Tampilkan saldo' : 'Sembunyikan saldo'"
@@ -27,8 +27,8 @@ const { hidden, toggle } = useBalanceVisibility()
         <AmountText :value="totalBalance" :hidden="hidden" />
       </p>
       <p v-if="totalSaved > 0" class="mt-2 text-body-sm text-on-primary-container">
-        Tersedia <AmountText :value="availableBalance" :hidden="hidden" />
-        · Tabungan <AmountText :value="totalSaved" :hidden="hidden" />
+        {{$t('common.available')}} <AmountText :value="availableBalance" :hidden="hidden" />
+        · {{ $t('goal.savings') }} <AmountText :value="totalSaved" :hidden="hidden" />
       </p>
     </template>
   </section>

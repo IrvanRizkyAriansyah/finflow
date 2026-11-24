@@ -14,7 +14,7 @@ const shown = computed(() => goalsWithProgress.value.slice(0, 3))
   <section>
     <div class="mb-3 flex items-center justify-between">
       <h2 class="text-headline-sm">Tabungan</h2>
-      <RouterLink to="/goals" class="text-label-md text-primary">Lihat semua</RouterLink>
+      <RouterLink to="/goals" class="text-label-md text-primary">{{$t('common.viewAll')}}</RouterLink>
     </div>
 
     <button

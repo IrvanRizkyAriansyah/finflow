@@ -13,11 +13,11 @@ const { wallets, walletUsage, addWallet, updateWallet, deleteWallet } =
   useTransactions();
 
 const TYPES = [
-  { id: "cash", label: "Tunai" },
-  { id: "bank", label: "Rekening Bank" },
-  { id: "debit", label: "Kartu Debit" },
-  { id: "credit", label: "Kartu Kredit" },
-  { id: "ewallet", label: "E-Wallet" },
+  { id: "cash", labelKey: "wallet.cash" },
+  { id: "bank", labelKey: "wallet.bank" },
+  { id: "debit", labelKey: "wallet.debit" },
+  { id: "credit", labelKey: "wallet.credit" },
+  { id: "ewallet", labelKey: "wallet.ewallet" },
 ];
 
 const form = reactive({ name: "", type: "bank", balanceText: "" });
@@ -59,9 +59,7 @@ watch(
 function onBalanceInput(e) {
   const digits = e.target.value.replace(/\D/g, "");
 
-  const formatted = digits
-    ? Number(digits).toLocaleString("id-ID")
-    : "";
+  const formatted = digits ? Number(digits).toLocaleString("id-ID") : "";
 
   form.balanceText = formatted;
   e.target.value = formatted;
@@ -97,29 +95,33 @@ function remove() {
 <template>
   <BaseModal
     :model-value="modelValue"
-    :title="isEdit ? 'Ubah Dompet' : 'Tambah Dompet'"
+    :title="
+      isEdit
+        ? $t('common.edit') + ' ' + $t('common.wallet')
+        : $t('common.add') + ' ' + $t('common.wallet')
+    "
     @update:model-value="(v) => !v && close()"
   >
     <form class="space-y-4" @submit.prevent="submit">
       <label class="block">
-        <span class="text-label-md">Nama</span>
+        <span class="text-label-md">{{ $t("common.name") }}</span>
         <input
           v-model="form.name"
           maxlength="40"
-          placeholder="mis. BCA, GoPay, Dompet Harian"
+          :placeholder="$t('wallet.placeholder')"
           class="mt-1 w-full rounded-lg border border-outline-variant bg-transparent px-4 py-3"
         />
       </label>
 
       <label class="block">
-        <span class="text-label-md">Jenis</span>
+        <span class="text-label-md">{{ $t('wallet.type') }}</span>
         <div class="relative min-w-0 flex-1">
           <select
             v-model="form.type"
             class="mt-1 w-full appearance-none rounded-lg border border-outline-variant bg-transparent px-4 py-3"
           >
             <option v-for="t in TYPES" :key="t.id" :value="t.id">
-              {{ t.label }}
+              {{ $t(t.labelKey) }}
             </option>
           </select>
           <svg
@@ -140,7 +142,7 @@ function remove() {
       </label>
 
       <label class="block">
-        <span class="text-label-md">Saldo</span>
+        <span class="text-label-md">{{ $t('wallet.balance') }}</span>
         <div
           class="mt-1 flex items-center rounded-lg border border-outline-variant px-4 focus-within:border-primary"
         >
@@ -155,7 +157,7 @@ function remove() {
           />
         </div>
         <span class="mt-1 block text-body-sm text-on-surface-variant"
-          >Saldo sebelum transaksi pertama dicatat di aplikasi.</span
+          >{{ $t('wallet.balanceHint') }}</span
         >
       </label>
 
@@ -167,7 +169,7 @@ function remove() {
         type="submit"
         class="w-full rounded-xl bg-primary py-4 font-semibold text-on-primary"
       >
-        {{ isEdit ? "Simpan Perubahan" : "Simpan" }}
+        {{ isEdit ? $t("common.saveChanges") : $t("common.save") }}
       </button>
 
       <div v-if="isEdit" class="border-t border-outline-variant/40 pt-4">
@@ -176,9 +178,9 @@ function remove() {
           class="text-center text-body-sm text-on-surface-variant"
         >
           <template v-if="usage"
-            >Dipakai {{ usage }} transaksi, jadi belum bisa dihapus.</template
+            >{{ $t('wallet.inUse', { n: usage }) }}</template
           >
-          <template v-else>Minimal harus ada satu dompet.</template>
+          <template v-else>{{ $t('wallet.minOne') }}</template>
         </p>
         <template v-else>
           <button
@@ -187,11 +189,11 @@ function remove() {
             class="flex w-full items-center justify-center gap-2 rounded-xl py-3 text-label-md text-error hover:bg-error-container/40"
             @click="confirmingDelete = true"
           >
-            <AppIcon name="delete" /> Hapus dompet
+            <AppIcon name="delete" /> {{$t('wallet.delete')}}
           </button>
           <div v-else class="space-y-2">
             <p class="text-center text-body-sm">
-              Hapus dompet ini dari Google Sheets Anda?
+              {{$t('wallet.deleteConfirm')}}
             </p>
             <div class="grid grid-cols-2 gap-3">
               <button
@@ -199,14 +201,14 @@ function remove() {
                 class="rounded-xl bg-surface-container py-3 text-label-md"
                 @click="confirmingDelete = false"
               >
-                Batal
+                {{ $t("common.cancel") }}
               </button>
               <button
                 type="button"
                 class="rounded-xl bg-error py-3 text-label-md text-white"
                 @click="remove"
               >
-                Ya, hapus
+                {{ $t("common.confirmDelete") }}
               </button>
             </div>
           </div>

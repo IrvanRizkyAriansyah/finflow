@@ -34,7 +34,7 @@ onBeforeUnmount(() => {
         >
           <div class="mb-4 flex items-center justify-between">
             <h2 class="text-headline-sm">{{ title }}</h2>
-            <button class="rounded-full p-2 hover:bg-surface-container flex" aria-label="Tutup" @click="close">
+            <button class="rounded-full p-2 hover:bg-surface-container flex" :aria-label="$t('common.close')" @click="close">
               <AppIcon name="close" />
             </button>
           </div>

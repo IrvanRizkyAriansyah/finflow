@@ -1,8 +1,10 @@
+import { t } from "../composables/useI18n"
+
 export const ACCOUNT_TYPES = [
-  { id: 'bank', label: 'Rekening Bank', icon: 'account_balance', hint: 'mis. BCA, Mandiri, BRI' },
-  { id: 'va', label: 'Virtual Account', icon: 'pin', hint: 'mis. BCA VA, Tokopedia' },
-  { id: 'ewallet', label: 'E-Wallet', icon: 'account_balance_wallet', hint: 'mis. GoPay, OVO, DANA' },
-  { id: 'other', label: 'Lainnya', icon: 'tag', hint: 'mis. PayPal, Wise' },
+  { id: 'bank', labelKey: 'accountType.bank', icon: 'account_balance', hintKey: t('accountType.bank.hint') },
+  { id: 'va', labelKey: 'accountType.va', icon: 'pin', hintKey: t('accountType.va.hint') },
+  { id: 'ewallet', labelKey: 'accountType.ewallet', icon: 'account_balance_wallet', hintKey: t('accountType.ewallet.hint') },
+  { id: 'other', labelKey: 'accountType.other', icon: 'tag', hintKey: t('accountType.other.hint') },
 ]
 
 export const accountTypeMeta = (id) => ACCOUNT_TYPES.find((t) => t.id === id) ?? ACCOUNT_TYPES[3]

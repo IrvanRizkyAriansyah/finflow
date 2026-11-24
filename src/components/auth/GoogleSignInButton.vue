@@ -22,12 +22,12 @@ async function handleSignIn() {
     :disabled="isLoading || status === 'checking' || status === 'creating'"
     @click="handleSignIn"
   >
-    <span v-if="status === 'creating'">Menyiapkan database di Google Sheets…</span>
-    <span v-else-if="isLoading || status === 'checking'">Menghubungkan…</span>
-    <span v-else class="text-primary">Sign in with Google</span>
+    <span v-if="status === 'creating'">{{ $t('auth.settingUp') }}</span>
+    <span v-else-if="isLoading || status === 'checking'">{{ $t('auth.connecting') }}</span>
+    <span v-else class="text-primary">{{ $t('auth.signIn') }}</span>
   </button>
   <p v-if="error || sheetsError" role="alert" class="mt-2 text-body-sm text-error">
-    {{ error || `Gagal menyiapkan database: ${sheetsError.message}` }}
+    {{ error || $t('auth.setupFailed', { message: sheetsError.message }) }}
   </p>
 
 </template>

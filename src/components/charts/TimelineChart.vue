@@ -33,14 +33,14 @@ function onKey(e) {
 
 <template>
   <p v-if="!hasData" class="py-10 text-center text-body-sm text-on-surface-variant">
-    Belum ada transaksi pada periode ini.
+    {{ $t('common.noTxPeriod') }}
   </p>
 
   <div v-else>
     <div class="mb-2 flex items-center gap-4 text-label-sm text-on-surface-variant">
-      <span class="flex items-center gap-1"><span class="h-2.5 w-2.5 rounded-sm bg-primary" /> Pemasukan</span>
-      <span class="flex items-center gap-1"><span class="h-2.5 w-2.5 rounded-sm bg-error" /> Pengeluaran</span>
-      <span v-if="!hidden" class="ml-auto">Maks {{ formatCompactCurrency(max) }}</span>
+      <span class="flex items-center gap-1"><span class="h-2.5 w-2.5 rounded-sm bg-primary" /> {{ $t('common.income') }}</span>
+      <span class="flex items-center gap-1"><span class="h-2.5 w-2.5 rounded-sm bg-error" /> {{ $t('common.expense') }}</span>
+      <span v-if="!hidden" class="ml-auto">{{ $t('common.max', { value: formatCompactCurrency(max) }) }}</span>
     </div>
 
     <div

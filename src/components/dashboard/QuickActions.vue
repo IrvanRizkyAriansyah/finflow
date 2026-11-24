@@ -11,13 +11,13 @@ const { open } = useTransactionModal()
       class="flex items-center justify-center gap-2 rounded-xl bg-secondary-container py-4 font-semibold text-on-secondary-container"
       @click="open({ type: 'income' })"
     >
-      <AppIcon name="add_card" /> Top Up
+      <AppIcon name="add_card" /> {{$t('dash.topUp')}}
     </button>
     <button
       class="flex items-center justify-center gap-2 rounded-xl bg-surface-container-lowest py-4 font-semibold shadow-sm"
       @click="open({ type: 'expense' })"
     >
-      <AppIcon name="send" /> Send
+      <AppIcon name="send" /> {{$t('dash.send')}}
     </button>
   </div>
 </template>

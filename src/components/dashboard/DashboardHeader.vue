@@ -1,13 +1,14 @@
 <script setup>
 import { computed } from 'vue'
-import AppIcon from '@/components/ui/AppIcon.vue'
 import AvatarImage from '@/components/ui/AvatarImage.vue'
+import LanguageSwitch from '@/components/ui/LanguageSwitch.vue'
 import { useGoogleAuth } from '@/composables/useGoogleAuth'
+import { t } from '@/composables/useI18n'
 
 const { user } = useGoogleAuth()
 const greeting = computed(() => {
   const h = new Date().getHours()
-  return h < 11 ? 'Selamat pagi' : h < 15 ? 'Selamat siang' : h < 18 ? 'Selamat sore' : 'Selamat malam'
+  return t(h < 11 ? 'greeting.morning' : h < 15 ? 'greeting.afternoon' : h < 18 ? 'greeting.evening' : 'greeting.night')
 })
 </script>
 
@@ -20,8 +21,6 @@ const greeting = computed(() => {
         <h1 class="text-headline-sm">{{ user?.givenName || user?.name }}</h1>
       </div>
     </div>
-    <button class="rounded-full bg-surface-container-lowest p-3 shadow-sm flex" aria-label="Notifikasi">
-      <AppIcon name="notifications" />
-    </button>
+    <LanguageSwitch />
   </header>
 </template>

@@ -39,11 +39,11 @@ async function reconnect() {
 
     <div class="md:pl-72">
       <div v-if="!isOnline" role="status" class="bg-inverse-surface px-4 py-2 text-center text-body-sm text-inverse-on-surface">
-        Mode offline<template v-if="pendingCount"> · {{ pendingCount }} transaksi menunggu sinkronisasi</template>
+        {{ $t('app.offline') }}<template v-if="pendingCount"> · {{ $t('app.pendingSync', { n: pendingCount }) }}</template>
       </div>
       <div v-else-if="needsReauth" role="alert" class="flex items-center justify-center gap-3 bg-error-container px-4 py-2 text-body-sm text-on-error-container">
-        Sesi Google berakhir.
-        <button class="font-semibold underline" @click="reconnect">Hubungkan ulang</button>
+        {{ $t('auth.sessionExpired') }}
+        <button class="font-semibold underline" @click="reconnect">{{ $t('auth.reconnect') }}</button>
       </div>
       <div v-else-if="error" role="alert" class="bg-error-container px-4 py-2 text-center text-body-sm text-on-error-container">
         {{ error }}

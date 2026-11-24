@@ -21,7 +21,7 @@ const title = computed(() => {
   if (!m) return ''
   if (m.name === 'detail') return goal.value?.name ?? 'Tujuan'
   if (m.name === 'entry') return m.type === 'withdraw' ? 'Tarik Dana' : 'Setor Dana'
-  return m.goal ? 'Ubah Tujuan' : 'Tujuan Baru'
+  return m.goal ? $t('common.edit')+' Tujuan' : $t('common.add')+'Tujuan'
 })
 </script>
 

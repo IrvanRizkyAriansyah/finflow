@@ -8,9 +8,9 @@ export const GOAL_COLORS = ['#10412a', '#3B82F6', '#8B5CF6', '#EC4899', '#F97316
 
 // Pilihan cepat saat membuat tujuan baru
 export const GOAL_PRESETS = [
-  { name: 'Dana Darurat', icon: 'shield', color: '#EF4444' },
-  { name: 'Dana Pensiun', icon: 'elderly', color: '#8B5CF6' },
-  { name: 'Beli HP', icon: 'smartphone', color: '#3B82F6' },
-  { name: 'Liburan', icon: 'beach_access', color: '#F97316' },
-  { name: 'Pendidikan', icon: 'school', color: '#10412a' },
+  { nameKey: 'goal.preset.emergency', icon: 'shield', color: '#EF4444' },
+  { nameKey: 'goal.preset.retirement', icon: 'elderly', color: '#8B5CF6' },
+  { nameKey: 'goal.preset.phone', icon: 'smartphone', color: '#3B82F6' },
+  { nameKey: 'goal.preset.vacation', icon: 'beach_access', color: '#F97316' },
+  { nameKey: 'goal.preset.education', icon: 'school', color: '#10412a' },
 ]

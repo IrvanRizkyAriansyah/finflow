@@ -21,9 +21,9 @@ const label = (m) => `${m.long}: pemasukan ${money(m.income)}, pengeluaran ${mon
 
   <div v-else>
     <div class="mb-2 flex items-center gap-4 text-label-sm text-on-surface-variant">
-      <span class="flex items-center gap-1"><span class="h-2.5 w-2.5 rounded-sm bg-primary" /> Pemasukan</span>
-      <span class="flex items-center gap-1"><span class="h-2.5 w-2.5 rounded-sm bg-error" /> Pengeluaran</span>
-      <span v-if="!hidden" class="ml-auto">Maks {{ formatCompactCurrency(max) }}</span>
+      <span class="flex items-center gap-1"><span class="h-2.5 w-2.5 rounded-sm bg-primary" /> {{ $t('common.income') }}</span>
+      <span class="flex items-center gap-1"><span class="h-2.5 w-2.5 rounded-sm bg-error" /> {{ $t('common.expense') }}</span>
+      <span v-if="!hidden" class="ml-auto">{{ $t('common.max', { value: formatCompactCurrency(max) }) }}</span>
     </div>
 
     <div class="relative">
@@ -54,16 +54,16 @@ const label = (m) => `${m.long}: pemasukan ${money(m.income)}, pengeluaran ${mon
       </div>
     </div>
 
-    <dl v-if="current" class="mt-3 grid grid-cols-3 gap-2 rounded-lg bg-surface-container-low p-3 text-body-sm">
-      <div class="min-w-0">
+    <dl v-if="current" class="mt-3 grid md:grid-cols-3 gap-2 rounded-lg bg-surface-container-low p-3 text-body-sm">
+      <div class="min-w-0 max-sm:flex max-sm:justify-between">
         <dt class="text-label-sm text-on-surface-variant">{{ current.long }}</dt>
         <dd class="font-semibold text-primary">{{ money(current.income) }}</dd>
       </div>
-      <div class="min-w-0">
+      <div class="min-w-0 max-sm:flex max-sm:justify-between">
         <dt class="text-label-sm text-on-surface-variant">Pengeluaran</dt>
         <dd class="font-semibold text-error">{{ money(current.expense) }}</dd>
       </div>
-      <div class="min-w-0">
+      <div class="min-w-0 max-sm:flex max-sm:justify-between">
         <dt class="text-label-sm text-on-surface-variant">Selisih</dt>
         <dd class="font-semibold" :class="current.net >= 0 ? 'text-primary' : 'text-error'">{{ money(current.net) }}</dd>
       </div>

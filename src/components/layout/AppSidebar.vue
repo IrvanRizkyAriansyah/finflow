@@ -17,7 +17,7 @@ const { open } = useTransactionModal()
       <div class="mb-8 flex items-center gap-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-secondary-container">
           <!-- <AppIcon name="account_balance_wallet" filled /> -->
-           <img src="/logo.svg"
+           <img src="/logo.svg" :aria-label="$t('nav.main')"/>
         </div>
         <span class="font-display text-headline-sm">FinFlow</span>
       </div>
@@ -31,7 +31,7 @@ const { open } = useTransactionModal()
             : 'text-on-surface-variant hover:bg-surface-container'"
         >
           <AppIcon :name="item.icon" :filled="isActivePath(route.path, item.to)" />
-          {{ item.label }}
+          {{ $t(item.labelKey) }}
         </RouterLink>
       </nav>
 
@@ -39,7 +39,7 @@ const { open } = useTransactionModal()
         class="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-secondary-container py-3 font-semibold text-on-secondary-container"
         @click="open()"
       >
-        <AppIcon name="add" /> Tambah Transaksi
+        <AppIcon name="add" /> {{ $t('nav.addTransaction') }}
       </button>
     </div>
 

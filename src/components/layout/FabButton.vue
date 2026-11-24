@@ -8,7 +8,7 @@ const { open } = useTransactionModal()
 <template>
   <button
     class="flex h-14 w-14 items-center justify-center rounded-full bg-secondary-container text-on-secondary-container shadow-lg ring-4 ring-surface transition-transform active:scale-95"
-    aria-label="Tambah transaksi"
+    :aria-label="$t('tx.add')"
     @click="open()"
   >
     <AppIcon name="add" />

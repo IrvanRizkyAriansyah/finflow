@@ -1,3 +1,5 @@
+import { dateLocale } from "../composables/useI18n"
+
 const pad = (n) => String(n).padStart(2, '0')
 const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1)
 
@@ -31,8 +33,8 @@ export function lastDayOfMonth(key) {
   return toDateStr(new Date(y, m, 0))
 }
 
-export const shortDate = (s) => parseDate(s).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })
+export const shortDate = (s) => parseDate(s).toLocaleDateString(dateLocale(), { day: 'numeric', month: 'short' })
 export const monthShortLabel = (key) =>
-  cap(new Date(`${key}-01T00:00:00`).toLocaleDateString('id-ID', { month: 'short' }))
+  cap(new Date(`${key}-01T00:00:00`).toLocaleDateString(dateLocale(), { month: 'short' }))
 export const monthLongLabel = (key) =>
-  cap(new Date(`${key}-01T00:00:00`).toLocaleDateString('id-ID', { month: 'long', year: 'numeric' }))
+  cap(new Date(`${key}-01T00:00:00`).toLocaleDateString(dateLocale(), { month: 'long', year: 'numeric' }))

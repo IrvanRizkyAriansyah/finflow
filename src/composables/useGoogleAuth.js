@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { requestAccessToken, fetchUserInfo, revokeAccessToken } from '@/services/googleAuth'
+import { t } from './useI18n'
 
 const USER_KEY = 'ff_user'
 const TOKEN_KEY = 'ff_token'
@@ -10,15 +11,11 @@ const readJson = (storage, key) => {
 }
 const authError = (code) => Object.assign(new Error(code), { code })
 
-const MESSAGES = {
-  popup_closed: 'Login dibatalkan.',
-  popup_failed_to_open: 'Popup login diblokir browser. Izinkan popup lalu coba lagi.',
-  access_denied: 'Akses ditolak. Izinkan akses agar data bisa disimpan di Google Sheets Anda.',
-  SCOPE_NOT_GRANTED: 'Izin Google Drive diperlukan untuk membuat database. Centang semua izin lalu coba lagi.',
-  MISSING_CLIENT_ID: 'VITE_GOOGLE_CLIENT_ID belum diisi di .env.local.',
-  GIS_LOAD_FAILED: 'Gagal memuat Google Sign-In. Periksa koneksi internet Anda.',
+const toMessage = (e) => {
+  const key = `auth.err.${e?.message}`
+  const msg = t(key)
+  return msg === key ? t('auth.err.default') : msg
 }
-const toMessage = (e) => MESSAGES[e?.message] ?? 'Login gagal. Silakan coba lagi.'
 
 // State level modul → dipakai bersama oleh semua komponen
 const user = ref(readJson(localStorage, USER_KEY))         // profil: tetap ada walau offline

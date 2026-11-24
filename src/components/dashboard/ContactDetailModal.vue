@@ -35,7 +35,7 @@ async function copy(account, index) {
         v-if="!contact.accounts.length"
         class="rounded-lg bg-surface-container-low p-4 text-center text-body-sm text-on-surface-variant"
       >
-        Belum ada nomor rekening. Klik <strong>Ubah</strong> untuk menambahkannya.
+        {{ $t('contact.noAccounts') }}.
       </p>
 
       <ul v-else class="space-y-3">
@@ -47,7 +47,7 @@ async function copy(account, index) {
             <AppIcon :name="accountTypeMeta(a.type).icon" />
           </span>
           <div class="min-w-0 flex-1">
-            <p class="text-label-sm text-on-surface-variant">{{ a.provider }} · {{ accountTypeMeta(a.type).label }}</p>
+            <p class="text-label-sm text-on-surface-variant">{{ a.provider }} · {{ accountTypeMeta(a.type).labelKey }}</p>
             <p class="break-all font-display text-headline-sm tabular-nums">{{ a.number }}</p>
           </div>
           <button
@@ -60,7 +60,7 @@ async function copy(account, index) {
           >
             <AppIcon :name="feedback?.index === i && feedback.ok ? 'check' : 'content_copy'" />
             <span aria-live="polite">
-              {{ feedback?.index === i ? (feedback.ok ? 'Tersalin' : 'Gagal') : 'Salin' }}
+              {{ feedback?.index === i ? (feedback.ok ? $t('common.copied') : $t('common.failed')) : $t('common.copy') }}
             </span>
           </button>
         </li>
@@ -68,14 +68,14 @@ async function copy(account, index) {
 
       <div class="grid grid-cols-2 gap-3 pt-2">
         <button type="button" class="rounded-xl bg-surface-container py-3 text-label-md" @click="emit('edit')">
-          Ubah
+          {{ $t('common.edit') }}
         </button>
         <button
           type="button"
           class="rounded-xl bg-secondary-container py-3 text-label-md text-on-secondary-container"
           @click="emit('record')"
         >
-          Catat pengeluaran
+          {{$t('contact.logExpense')}}
         </button>
       </div>
     </div>

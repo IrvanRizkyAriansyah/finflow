@@ -17,12 +17,12 @@ const { hidden } = useBalanceVisibility()
 <template>
   <section>
     <div v-if="showHeader" class="mb-3 flex items-center justify-between">
-      <h2 class="text-headline-sm">Cards</h2>
-      <RouterLink to="/wallets" class="text-label-md text-primary">Lihat semua</RouterLink>
+      <h2 class="text-headline-sm">{{$t('dash.cards')}}</h2>
+      <RouterLink to="/wallets" class="text-label-md text-primary">{{ $t('common.viewAll') }}</RouterLink>
     </div>
 
     <p v-if="!walletsWithBalance.length" class="rounded-xl bg-surface-container-low p-4 text-body-sm text-on-surface-variant">
-      Belum ada dompet.
+      {{$t('wallet.none')}}
     </p>
     <div
       v-else

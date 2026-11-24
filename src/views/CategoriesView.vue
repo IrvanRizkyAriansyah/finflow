@@ -19,30 +19,30 @@ const edit = (c) => { editing.value = c; open.value = true }
 <template>
   <div class="mx-auto max-w-xl space-y-gutter-mobile">
     <div class="flex items-center justify-between gap-3">
-      <PageHeader title="Kategori" />
+      <PageHeader :title="$t('cat.title')" />
       <button
         class="flex items-center gap-1 rounded-full bg-secondary-container px-4 py-2 text-label-md text-on-secondary-container"
         @click="add"
       >
-        <AppIcon name="add" /> Tambah
+        <AppIcon name="add" /> {{ $t('common.add') }}
       </button>
     </div>
 
-    <div class="grid grid-cols-2 gap-1 rounded-lg bg-surface-container p-1" role="group" aria-label="Tipe kategori">
+    <div class="grid grid-cols-2 gap-1 rounded-lg bg-surface-container p-1" role="group" :aria-label="$t('cat.type')">
       <button
         class="rounded-md py-2 text-label-md"
         :class="tab === 'expense' ? 'bg-surface-container-lowest shadow-sm' : 'text-on-surface-variant'"
         @click="tab = 'expense'"
-      >Pengeluaran</button>
+      >{{ $t('common.expense') }}</button>
       <button
         class="rounded-md py-2 text-label-md"
         :class="tab === 'income' ? 'bg-surface-container-lowest shadow-sm' : 'text-on-surface-variant'"
         @click="tab = 'income'"
-      >Pemasukan</button>
+      >{{ $t('common.income') }}</button>
     </div>
 
     <section class="rounded-xl bg-surface-container-lowest p-3 shadow-sm">
-      <p v-if="!items.length" class="py-8 text-center text-body-sm text-on-surface-variant">Belum ada kategori.</p>
+      <p v-if="!items.length" class="py-8 text-center text-body-sm text-on-surface-variant">{{ $t('cat.none') }}</p>
       <ul v-else class="divide-y divide-outline-variant/40">
         <li v-for="c in items" :key="c.id">
           <button
@@ -58,7 +58,7 @@ const edit = (c) => { editing.value = c; open.value = true }
             </span>
             <span class="min-w-0 flex-1">
               <span class="block truncate text-body-md font-semibold">{{ c.name }}</span>
-              <span class="block text-body-sm text-on-surface-variant">{{ categoryUsage.get(c.id) ?? 0 }} transaksi</span>
+              <span class="block text-body-sm text-on-surface-variant">{{ $t('common.txCount', { n: categoryUsage.get(c.id) ?? 0 }) }}</span>
             </span>
             <AppIcon name="chevron_right" />
           </button>

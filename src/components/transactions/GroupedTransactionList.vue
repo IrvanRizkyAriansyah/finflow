@@ -6,6 +6,7 @@ import { useTransactions } from '@/composables/useTransactions'
 import { useTransactionModal } from '@/composables/useTransactionModal'
 import { todayStr } from '@/utils/formatDate'
 import { addDays, parseDate } from '@/utils/dateRange'
+import { t } from '../../composables/useI18n.js'
 
 const props = defineProps({
   items: { type: Array, default: () => [] },
@@ -40,8 +41,8 @@ const groups = computed(() => {
 
 function dayLabel(date) {
   const today = todayStr()
-  if (date === today) return 'Hari ini'
-  if (date === addDays(today, -1)) return 'Kemarin'
+  if (date === today) return t('common.today')
+  if (date === addDays(today, -1)) return t('common.tomorrow')
   const sameYear = date.slice(0, 4) === today.slice(0, 4)
   return parseDate(date).toLocaleDateString('id-ID', {
     weekday: 'long', day: 'numeric', month: 'long', ...(sameYear ? {} : { year: 'numeric' }),
@@ -77,6 +78,6 @@ function dayLabel(date) {
       v-if="items.length > visible" type="button"
       class="w-full rounded-xl bg-surface-container py-3 text-label-md"
       @click="visible += PAGE"
-    >Tampilkan lebih banyak ({{ items.length - visible }} lagi)</button>
+    >{{ $t('common.showMore', { n: items.length - visible }) }}</button>
   </div>
 </template>

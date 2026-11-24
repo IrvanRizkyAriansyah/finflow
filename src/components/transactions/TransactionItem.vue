@@ -26,11 +26,11 @@ defineEmits(['select'])
         <AppIcon :name="category?.icon || 'category'" />
       </span>
       <div class="min-w-0 flex-1">
-        <p class="truncate text-body-md font-semibold">{{ tx.note || category?.name || 'Transaksi' }}</p>
+        <p class="truncate text-body-md font-semibold">{{ tx.note || category?.name || $t('common.transaction') }}</p>
         <p class="flex items-center gap-1 text-body-sm text-on-surface-variant">
           {{ formatDate(tx.date) }}
-          <span v-if="pending" class="flex items-center gap-0.5" title="Menunggu sinkronisasi">
-            <AppIcon name="cloud_off" /> <span class="sr-only">Menunggu sinkronisasi</span>
+          <span v-if="pending" class="flex items-center gap-0.5" :title="$t('tx.pending')">
+            <AppIcon name="cloud_off" /> <span class="sr-only">{{$t('tx.pending')}}</span>
           </span>
         </p>
       </div>

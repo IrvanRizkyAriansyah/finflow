@@ -1,3 +1,5 @@
+import { dateLocale } from "../composables/useI18n"
+
 // "2026-11-16" menurut zona waktu perangkat (bukan UTC)
 export const todayStr = () => new Date().toLocaleDateString('sv-SE')
 
@@ -5,7 +7,7 @@ export function formatDate(value) {
   const d = new Date(`${value}T00:00:00`)
   return Number.isNaN(d.getTime())
     ? String(value)
-    : d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
+    : d.toLocaleDateString(dateLocale(), { day: 'numeric', month: 'short', year: 'numeric' })
 }
 
 // Sel tanggal yang diedit manual di Sheets bisa terbaca sebagai angka serial

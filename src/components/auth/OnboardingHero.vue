@@ -6,11 +6,11 @@
     />
     <div class="p-6 md:p-8">
       <h1 class="text-headline-lg">
-        All Your Finances.
-        <span class="text-secondary-container">One Powerful Platform.</span>
+        {{ $t('hero.line1') }}
+        <span class="text-secondary-container">{{ $t('hero.line2') }}</span>
       </h1>
       <p class="mt-3 text-body-md text-on-primary-container">
-        Catat pemasukan dan pengeluaran, dengan data tersimpan di Google Sheets milik Anda sendiri.
+        {{ $t('hero.subtitle') }}
       </p>
     </div>
   </section>

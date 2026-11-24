@@ -88,7 +88,7 @@ function remove() {
     </label>
 
     <label class="block">
-      <span class="text-label-md">Target tanggal (opsional)</span>
+      <span class="text-label-md">Target tanggal ({{$t('common.optional')}})</span>
       <input
         v-model="form.deadline" type="date" :min="isEdit ? undefined : todayStr()"
         class="mt-1 w-full rounded-lg border border-outline-variant bg-transparent px-4 py-3"
@@ -123,7 +123,7 @@ function remove() {
     <p v-if="errorMsg" role="alert" class="text-body-sm text-error">{{ errorMsg }}</p>
 
     <button type="submit" class="w-full rounded-xl bg-primary py-4 font-semibold text-on-primary">
-      {{ isEdit ? 'Simpan Perubahan' : 'Buat Tujuan' }}
+      {{ isEdit ? $t('common.saveChanges') : $t('common.save') }}
     </button>
 
     <div v-if="isEdit" class="border-t border-outline-variant/40 pt-4">
@@ -140,8 +140,8 @@ function remove() {
           <template v-if="saved > 0">Dana <AmountText :value="saved" /> akan kembali ke Saldo tersedia.</template>
         </p>
         <div class="grid grid-cols-2 gap-3">
-          <button type="button" class="rounded-xl bg-surface-container py-3 text-label-md" @click="confirmingDelete = false">Batal</button>
-          <button type="button" class="rounded-xl bg-error py-3 text-label-md text-white" @click="remove">Ya, hapus</button>
+          <button type="button" class="rounded-xl bg-surface-container py-3 text-label-md" @click="confirmingDelete = false">{{ $t('common.cancel') }}</button>
+          <button type="button" class="rounded-xl bg-error py-3 text-label-md text-white" @click="remove">{{ $t('common.confirmDelete') }}</button>
         </div>
       </div>
     </div>

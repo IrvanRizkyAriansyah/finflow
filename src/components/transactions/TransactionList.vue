@@ -15,7 +15,7 @@ const shown = computed(() => (props.limit ? props.items.slice(0, props.limit) : 
     <div v-for="n in 4" :key="n" class="h-14 animate-pulse rounded-lg bg-surface-container" />
   </div>
   <p v-else-if="!shown.length" class="py-8 text-center text-body-sm text-on-surface-variant">
-    Belum ada transaksi.
+    {{ $t('common.noTx') }}
   </p>
   <ul v-else class="divide-y divide-outline-variant/40">
     <TransactionItem

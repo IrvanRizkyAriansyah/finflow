@@ -1,8 +1,8 @@
 export const NAV_ITEMS = [
-  { to: '/', label: 'Home', icon: 'home' },
-  { to: '/transactions', label: 'Transactions', icon: 'receipt_long' },
-  { to: '/wallets', label: 'Cards', icon: 'credit_card' },
-  { to: '/profile', label: 'Profile', icon: 'person' },
+  { to: '/', labelKey: 'nav.home', icon: 'home' },
+  { to: '/transactions', labelKey: 'nav.transactions', icon: 'receipt_long' },
+  { to: '/wallets', labelKey: 'nav.cards', icon: 'credit_card' },
+  { to: '/profile', labelKey: 'nav.profile', icon: 'person' },
 ]
 
 export const isActivePath = (current, to) =>

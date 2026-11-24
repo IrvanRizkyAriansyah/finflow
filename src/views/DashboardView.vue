@@ -20,28 +20,36 @@ const editWallet = (wallet) => { walletEditing.value = wallet; walletOpen.value 
 </script>
 
 <template>
-  <div class="space-y-gutter-mobile md:space-y-gutter">
+  <div class="w-full min-w-0 space-y-gutter-mobile md:space-y-gutter">
     <DashboardHeader />
 
-    <div class="grid gap-gutter-mobile md:grid-cols-12 md:gap-gutter">
-      <div class="space-y-gutter-mobile md:col-span-7 md:space-y-gutter">
+    <div class="grid w-full min-w-0 grid-cols-1 gap-gutter-mobile md:grid-cols-12 md:gap-gutter">
+
+      <!-- Main Content -->
+      <div class="min-w-0 space-y-gutter-mobile md:col-span-7 md:space-y-gutter">
         <BalanceCard />
         <CardsCarousel editable @select="editWallet" />
         <WalletFormModal v-model="walletOpen" :wallet="walletEditing" />
         <GoalsSection />
       </div>
 
-      <div class="space-y-gutter-mobile md:col-span-5 md:space-y-gutter">
+      <!-- Sidebar -->
+      <div class="min-w-0 space-y-gutter-mobile md:col-span-5 md:space-y-gutter">
         <QuickActions />
         <QuickSendContacts />
-        <section class="rounded-xl bg-surface-container-lowest p-5 shadow-sm">
+
+        <section class="w-full min-w-0 rounded-xl bg-surface-container-lowest p-5 shadow-sm">
           <div class="mb-2 flex items-center justify-between">
-            <h2 class="text-headline-sm">Recent Transactions</h2>
-            <RouterLink to="/transactions" class="text-label-md text-primary">Lihat semua</RouterLink>
+            <h2 class="text-headline-sm">{{$t('dash.recent')}}</h2>
+            <RouterLink to="/transactions" class="text-label-md text-primary">
+              {{$t('common.viewAll')}}
+            </RouterLink>
           </div>
+
           <TransactionList :items="sortedTransactions" :limit="5" />
         </section>
       </div>
+
     </div>
 
     <ChartsSection />

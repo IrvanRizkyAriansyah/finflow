@@ -6,6 +6,7 @@ import ContactDetailModal from './ContactDetailModal.vue'
 import ContactFormModal from './ContactFormModal.vue'
 import { useTransactions } from '@/composables/useTransactions'
 import { useTransactionModal } from '@/composables/useTransactionModal'
+import { t } from '../../composables/useI18n.js'
 
 const { contacts } = useTransactions()
 const { open: openTransaction } = useTransactionModal()
@@ -39,20 +40,20 @@ async function record() {
   const c = selected.value
   detailOpen.value = false
   await nextTick()
-  openTransaction({ type: 'expense', note: `Transfer ke ${c.name}`, category_id: 'cat-other' })
+  openTransaction({ type: 'expense', note: t('contact.transferTo', { name: c.name }), category_id: 'cat-other' })
 }
 </script>
 
 <template>
   <section>
-    <h2 class="mb-3 text-headline-sm">Quick Send</h2>
+    <h2 class="mb-3 text-headline-sm">{{$t('dash.quickSend')}}</h2>
 
     <div class="hide-scrollbar flex gap-4 overflow-x-auto pb-1">
       <button type="button" class="flex w-16 shrink-0 flex-col items-center gap-1" @click="add">
         <span class="flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-outline text-on-surface-variant">
           <AppIcon name="add" />
         </span>
-        <span class="text-label-sm">Tambah</span>
+        <span class="text-label-sm">{{ $t('common.add') }}</span>
       </button>
 
       <button

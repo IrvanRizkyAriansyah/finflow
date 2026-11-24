@@ -34,7 +34,7 @@ function removeEntry(id) {
 <template>
   <div v-if="!goal" class="space-y-4 py-4 text-center">
     <p class="text-body-sm text-on-surface-variant">Tujuan ini sudah tidak ada.</p>
-    <button class="rounded-xl bg-surface-container px-6 py-3 text-label-md" @click="close">Tutup</button>
+    <button class="rounded-xl bg-surface-container px-6 py-3 text-label-md" @click="close">{{ $t('common.close') }}</button>
   </div>
 
   <div v-else class="space-y-5">
@@ -82,7 +82,7 @@ function removeEntry(id) {
         class="rounded-xl bg-surface-container py-3 text-label-md disabled:opacity-40"
         :disabled="goal.saved <= 0" @click="openEntry(goal.id, 'withdraw')"
       >Tarik</button>
-      <button class="rounded-xl bg-surface-container py-3 text-label-md" @click="openForm(goal)">Ubah</button>
+      <button class="rounded-xl bg-surface-container py-3 text-label-md" @click="openForm(goal)">{{ $t('common.edit') }}</button>
     </div>
 
     <section>
@@ -105,7 +105,7 @@ function removeEntry(id) {
 
           <template v-if="confirmId === e.id">
             <button class="rounded-lg bg-error px-3 py-1 text-label-sm text-white" @click="removeEntry(e.id)">Hapus</button>
-            <button class="rounded-lg bg-surface-container px-3 py-1 text-label-sm" @click="confirmId = null">Batal</button>
+            <button class="rounded-lg bg-surface-container px-3 py-1 text-label-sm" @click="confirmId = null">{{ $t('common.cancel') }}</button>
           </template>
           <template v-else>
             <AmountText

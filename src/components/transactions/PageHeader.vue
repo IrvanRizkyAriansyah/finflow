@@ -9,7 +9,7 @@ const goBack = () => (window.history.state?.back ? router.back() : router.push('
 
 <template>
   <header class="flex items-center gap-3">
-    <button class="rounded-full bg-surface-container-lowest p-2 shadow-sm md:hidden flex" aria-label="Kembali" @click="goBack">
+    <button class="rounded-full bg-surface-container-lowest p-2 shadow-sm md:hidden flex" :aria-label="$t('common.back')" @click="goBack">
       <AppIcon name="arrow_back" />
     </button>
     <h1 class="text-headline-md">{{ title }}</h1>

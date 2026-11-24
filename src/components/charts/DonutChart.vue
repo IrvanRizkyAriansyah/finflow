@@ -28,7 +28,7 @@ const pct = (p) => (p < 1 ? '<1%' : `${Math.round(p)}%`)
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-5 sm:flex-row">
+  <div class="flex flex-col items-center gap-5">
     <div class="relative h-40 w-40 shrink-0">
       <svg viewBox="0 0 100 100" class="h-full w-full -rotate-90" role="img" aria-label="Diagram pengeluaran per kategori">
         <circle cx="50" cy="50" r="38" fill="none" stroke-width="14" class="stroke-surface-container" />

@@ -2,13 +2,7 @@ import { ref, computed } from 'vue'
 import { todayStr, formatDate } from '@/utils/formatDate'
 import { addDays, addMonths, diffDays } from '@/utils/dateRange'
 
-export const PRESETS = [
-  { id: '7d', label: '7 Hari' },
-  { id: '1m', label: '1 Bulan' },
-  { id: '3m', label: '3 Bulan' },
-  { id: 'custom', label: 'Kustom' },
-]
-const NAMES = { '7d': '7 hari terakhir', '1m': '1 bulan terakhir', '3m': '3 bulan terakhir', custom: 'Rentang kustom' }
+export const PRESETS = [{ id: '7d' }, { id: '1m' }, { id: '3m' }, { id: 'custom' }]
 
 // State level modul: pilihan periode bertahan selama sesi
 const preset = ref('1m')
@@ -38,7 +32,7 @@ const previousRange = computed(() => {
 })
 
 const rangeLabel = computed(() => `${formatDate(range.value.start)} – ${formatDate(range.value.end)}`)
-const periodName = computed(() => NAMES[preset.value])
+const periodName = computed(() => t(`period.name.${preset.value}`))
 
 export function usePeriodFilter() {
   return { preset, customStart, customEnd, range, days, previousRange, rangeLabel, periodName }

@@ -82,22 +82,22 @@ function remove() {
 <template>
   <BaseModal
     :model-value="modelValue"
-    :title="isEdit ? 'Ubah Kontak' : 'Tambah Kontak'"
+    :title="isEdit ? $t('common.edit')+' Kontak' : $t('common.add')+' Kontak'"
     @update:model-value="(v) => !v && close()"
   >
     <form class="space-y-4" @submit.prevent="submit">
       <label class="block">
-        <span class="text-label-md">Nama</span>
+        <span class="text-label-md">{{ $t('common.name') }}</span>
         <input
           v-model="form.name"
           maxlength="40"
-          placeholder="mis. Budi"
+          :placeholder="$t('contact.namePlaceholder')"
           class="mt-1 w-full rounded-lg border border-outline-variant bg-transparent px-4 py-3"
         />
       </label>
 
       <div class="space-y-3">
-        <span class="text-label-md">Nomor rekening / VA</span>
+        <span class="text-label-md">{{$t('contact.accountNumber')}}</span>
 
         <div
           v-for="(a, i) in form.accounts"
@@ -111,7 +111,7 @@ function remove() {
                 class="w-full appearance-none rounded-lg border border-outline-variant bg-transparent px-3 py-2 pr-10"
               >
                 <option v-for="t in ACCOUNT_TYPES" :key="t.id" :value="t.id">
-                  {{ t.label }}
+                  {{ $t(t.labelKey) }}
                 </option>
               </select>
 
@@ -142,7 +142,7 @@ function remove() {
           <input
             v-model="a.provider"
             maxlength="40"
-            :placeholder="accountTypeMeta(a.type).hint"
+            :placeholder="accountTypeMeta(a.type).hintKey"
             class="w-full rounded-lg border border-outline-variant bg-transparent px-3 py-2"
           />
           <input
@@ -150,7 +150,7 @@ function remove() {
             maxlength="40"
             autocomplete="off"
             :inputmode="a.type === 'other' ? 'text' : 'numeric'"
-            placeholder="Nomor"
+            :placeholder="$t('contact.number')"
             class="w-full rounded-lg border border-outline-variant bg-transparent px-3 py-2 tabular-nums"
           />
         </div>
@@ -161,22 +161,22 @@ function remove() {
           class="flex w-full items-center justify-center gap-1 rounded-lg bg-surface-container py-2 text-label-md"
           @click="addAccount"
         >
-          <AppIcon name="add" /> Tambah rekening
+          <AppIcon name="add" /> {{$t('contact.addAccount')}}
         </button>
       </div>
 
       <label class="block">
-        <span class="text-label-md">Catatan</span>
+        <span class="text-label-md">{{ $t('common.note') }}</span>
         <input
           v-model="form.note"
           maxlength="80"
-          placeholder="Opsional"
+          :placeholder="$t('common.optional')"
           class="mt-1 w-full rounded-lg border border-outline-variant bg-transparent px-4 py-3"
         />
       </label>
 
       <p class="text-body-sm text-on-surface-variant">
-        Jangan simpan PIN, password, atau kode CVV di sini.
+        {{$t('contact.securityNote')}}
       </p>
       <p v-if="errorMsg" role="alert" class="text-body-sm text-error">
         {{ errorMsg }}
@@ -186,7 +186,7 @@ function remove() {
         type="submit"
         class="w-full rounded-xl bg-primary py-4 font-semibold text-on-primary"
       >
-        {{ isEdit ? "Simpan Perubahan" : "Simpan" }}
+        {{ isEdit ? $t('common.saveChanges') : $t('common.save') }}
       </button>
 
       <div v-if="isEdit" class="border-t border-outline-variant/40 pt-4">
@@ -196,11 +196,11 @@ function remove() {
           class="flex w-full items-center justify-center gap-2 rounded-xl py-3 text-label-md text-error hover:bg-error-container/40"
           @click="confirmingDelete = true"
         >
-          <AppIcon name="delete" /> Hapus kontak
+          <AppIcon name="delete" /> {{ $t('contact.delete') }}
         </button>
         <div v-else class="space-y-2">
           <p class="text-center text-body-sm">
-            Hapus kontak ini dari Google Sheets Anda?
+            {{$t('contact.deleteConfirm')}}
           </p>
           <div class="grid grid-cols-2 gap-3">
             <button
@@ -208,14 +208,14 @@ function remove() {
               class="rounded-xl bg-surface-container py-3 text-label-md"
               @click="confirmingDelete = false"
             >
-              Batal
+              {{ $t('common.cancel') }}
             </button>
             <button
               type="button"
               class="rounded-xl bg-error py-3 text-label-md text-white"
               @click="remove"
             >
-              Ya, hapus
+              {{ $t('common.confirmDelete') }}
             </button>
           </div>
         </div>

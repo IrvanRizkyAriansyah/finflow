@@ -59,7 +59,7 @@ function submit() {
     </p>
 
     <label class="block">
-      <span class="text-label-md">Nominal</span>
+      <span class="text-label-md">{{ $t('common.amount') }}</span>
       <div class="mt-1 flex items-center rounded-lg border border-outline-variant px-4 focus-within:border-primary">
         <span class="text-on-surface-variant">Rp</span>
         <input
@@ -77,19 +77,19 @@ function submit() {
 
     <div class="grid grid-cols-2 gap-3">
       <label class="block">
-        <span class="text-label-md">Tanggal</span>
+        <span class="text-label-md">{{ $t('common.date') }}</span>
         <input v-model="form.date" type="date" class="mt-1 w-full rounded-lg border border-outline-variant bg-transparent px-4 py-3" />
       </label>
       <label class="block">
-        <span class="text-label-md">Catatan</span>
-        <input v-model="form.note" maxlength="80" placeholder="Opsional" class="mt-1 w-full rounded-lg border border-outline-variant bg-transparent px-4 py-3" />
+        <span class="text-label-md">{{ $t('common.note') }}</span>
+        <input v-model="form.note" maxlength="80" :placeholder="$t('common.optional')" class="mt-1 w-full rounded-lg border border-outline-variant bg-transparent px-4 py-3" />
       </label>
     </div>
 
     <p v-if="errorMsg" role="alert" class="text-body-sm text-error">{{ errorMsg }}</p>
 
     <div class="grid grid-cols-2 gap-3">
-      <button type="button" class="rounded-xl bg-surface-container py-4 font-semibold" @click="back">Batal</button>
+      <button type="button" class="rounded-xl bg-surface-container py-4 font-semibold" @click="back">{{ $t('common.cancel') }}</button>
       <button type="submit" class="rounded-xl bg-primary py-4 font-semibold text-on-primary">
         {{ isDeposit ? 'Setor' : 'Tarik' }}
       </button>

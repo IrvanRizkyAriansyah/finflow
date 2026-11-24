@@ -11,13 +11,13 @@ const props = defineProps({
 defineEmits(['select'])
 
 const TYPES = {
-  cash: { label: 'Tunai', icon: 'payments' },
-  bank: { label: 'Rekening Bank', icon: 'account_balance' },
-  debit: { label: 'Kartu Debit', icon: 'credit_card' },
-  credit: { label: 'Kartu Kredit', icon: 'credit_card' },
-  ewallet: { label: 'E-Wallet', icon: 'account_balance_wallet' },
+  cash: { labelKey: 'wallet.cash', icon: 'payments' },
+  bank: { labelKey: 'wallet.bank', icon: 'account_balance' },
+  debit: { labelKey: 'wallet.debit', icon: 'credit_card' },
+  credit: { labelKey: 'wallet.credit', icon: 'credit_card' },
+  ewallet: { labelKey: 'wallet.ewallet', icon: 'account_balance_wallet' },
 }
-const meta = computed(() => TYPES[props.wallet.type] ?? { label: props.wallet.type || 'Dompet', icon: 'account_balance_wallet' })
+const meta = computed(() => TYPES[props.wallet.type] ?? { labelKey: 'common.wallet', icon: 'account_balance_wallet' })
 </script>
 
 <template>
@@ -29,7 +29,7 @@ const meta = computed(() => TYPES[props.wallet.type] ?? { label: props.wallet.ty
     @click="interactive && $emit('select', wallet)"
   >
     <div class="flex items-center justify-between">
-      <span class="text-label-md">{{ meta.label }}</span>
+      <span class="text-label-md">{{ $t(meta.labelKey) }}</span>
       <AppIcon :name="meta.icon" />
     </div>
     <p class="mt-6 text-body-sm opacity-80">{{ wallet.name }}</p>

@@ -15,7 +15,7 @@ const barHeight = (v) => (max.value > 0 && v > 0 ? `${Math.max(4, (v / max.value
 
 <template>
   <p v-if="max === 0" class="py-10 text-center text-body-sm text-on-surface-variant">
-    Belum ada pengeluaran pada periode ini.
+    {{ $t('common.noExpensePeriod') }}
   </p>
 
   <div v-else>

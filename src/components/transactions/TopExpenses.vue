@@ -12,7 +12,7 @@ const { openEdit } = useTransactionModal()
 
 <template>
   <p v-if="!items.length" class="py-10 text-center text-body-sm text-on-surface-variant">
-    Belum ada pengeluaran di periode ini.
+    {{ $t('common.noExpensePeriod') }}
   </p>
   <ol v-else class="divide-y divide-outline-variant/40">
     <li v-for="(t, i) in items" :key="t.id">
@@ -28,7 +28,7 @@ const { openEdit } = useTransactionModal()
           <AppIcon :name="categoryMap.get(t.category_id)?.icon || 'category'" />
         </span>
         <span class="min-w-0 flex-1">
-          <span class="block truncate text-body-md font-semibold">{{ t.note || categoryMap.get(t.category_id)?.name || 'Transaksi' }}</span>
+          <span class="block truncate text-body-md font-semibold">{{ t.note || categoryMap.get(t.category_id)?.name || $t('common.transaction') }}</span>
           <span class="block text-body-sm text-on-surface-variant">{{ formatDate(t.date) }}</span>
         </span>
         <AmountText class="text-body-md font-semibold" :value="t.amount" type="expense" />

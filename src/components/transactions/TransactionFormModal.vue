@@ -77,8 +77,8 @@ function onAmountInput(e) {
 
 async function submit() {
   errorMsg.value = "";
-  if (!amount.value) return (errorMsg.value = "Masukkan nominal lebih dari 0.");
-  if (!form.category_id) return (errorMsg.value = "Pilih kategori.");
+  if (!amount.value) return (errorMsg.value = t('tx.errAmountMin'));
+  if (!form.category_id) return (errorMsg.value = t('tx.errCategory'));
   submitting.value = true;
   try {
     const payload = {
@@ -108,14 +108,14 @@ function remove() {
 <template>
   <BaseModal
     :model-value="isOpen"
-    :title="isEdit ? 'Ubah Transaksi' : 'Tambah Transaksi'"
+    :title="isEdit ? $t('common.edit')+' '+$t('common.transaction') : $t('common.add')+' '+$t('common.transaction')"
     @update:model-value="(v) => !v && close()"
   >
     <form class="space-y-4" @submit.prevent="submit">
       <div
         class="grid grid-cols-2 gap-1 rounded-lg bg-surface-container p-1"
         role="group"
-        aria-label="Tipe transaksi"
+        :aria-label="$t('tx.type')"
       >
         <button
           type="button"
@@ -127,7 +127,7 @@ function remove() {
           "
           @click="form.type = 'expense'"
         >
-          Pengeluaran
+          {{ $t('common.expense') }}
         </button>
         <button
           type="button"
@@ -139,12 +139,12 @@ function remove() {
           "
           @click="form.type = 'income'"
         >
-          Pemasukan
+          {{ $t('common.income') }}
         </button>
       </div>
 
       <label class="block">
-        <span class="text-label-md">Nominal</span>
+        <span class="text-label-md">{{ $t('common.amount') }}</span>
         <div
           class="mt-1 flex items-center rounded-lg border border-outline-variant px-4 focus-within:border-primary"
         >
@@ -189,7 +189,7 @@ function remove() {
       </label>
 
       <label v-if="wallets.length > 1" class="block">
-        <span class="text-label-md">Dompet</span>
+        <span class="text-label-md">{{$t('common.wallet')}}</span>
         <div class="relative min-w-0 flex-1">
           <select
             v-model="form.wallet_id"
@@ -218,7 +218,7 @@ function remove() {
 
       <div class="grid grid-cols-2 gap-3">
         <label class="block">
-          <span class="text-label-md">Tanggal</span>
+          <span class="text-label-md">{{ $t('common.date') }}</span>
           <input
             v-model="form.date"
             type="date"
@@ -226,7 +226,7 @@ function remove() {
           />
         </label>
         <label class="block">
-          <span class="text-label-md">Catatan</span>
+          <span class="text-label-md">{{ $t('common.note') }}</span>
           <input
             v-model="form.note"
             maxlength="80"
@@ -240,8 +240,7 @@ function remove() {
         v-if="!filteredCategories.length"
         class="text-body-sm text-on-surface-variant"
       >
-        Kategori belum termuat. Sambungkan ke internet sekali untuk memuat data
-        awal.
+        {{ $t('tx.categoryNotLoaded') }}
       </p>
       <p v-if="errorMsg" role="alert" class="text-body-sm text-error">
         {{ errorMsg }}
@@ -252,7 +251,7 @@ function remove() {
         :disabled="submitting || !filteredCategories.length"
         class="w-full rounded-xl bg-primary py-4 font-semibold text-on-primary disabled:opacity-50"
       >
-        {{ isEdit ? "Simpan Perubahan" : "Simpan" }}
+        {{ isEdit ? $t('common.saveChanges') : $t('common.save') }}
       </button>
 
       <div v-if="isEdit" class="border-t border-outline-variant/40 pt-4">
@@ -262,11 +261,11 @@ function remove() {
           class="flex w-full items-center justify-center gap-2 rounded-xl py-3 text-label-md text-error hover:bg-error-container/40"
           @click="confirmingDelete = true"
         >
-          <AppIcon name="delete" /> Hapus transaksi
+          <AppIcon name="delete" /> {{$t('tx.delete')}}
         </button>
         <div v-else class="space-y-2">
           <p class="text-center text-body-sm">
-            Hapus transaksi ini dari Google Sheets Anda?
+            {{$t('tx.deleteConfirm')}}
           </p>
           <div class="grid grid-cols-2 gap-3">
             <button
@@ -274,14 +273,14 @@ function remove() {
               class="rounded-xl bg-surface-container py-3 text-label-md"
               @click="confirmingDelete = false"
             >
-              Batal
+              {{ $t('common.cancel') }}
             </button>
             <button
               type="button"
               class="rounded-xl bg-error py-3 text-label-md text-white"
               @click="remove"
             >
-              Ya, hapus
+              {{ $t('common.confirmDelete') }}
             </button>
           </div>
         </div>

@@ -12,7 +12,7 @@ const active = computed(() => props.rows.filter((r) => r.income > 0 || r.expense
 
 <template>
   <p v-if="!active.length" class="py-10 text-center text-body-sm text-on-surface-variant">
-    Belum ada transaksi pada periode ini.
+    {{ $t('common.noTxPeriod') }}
   </p>
 
   <div v-else class="space-y-4">

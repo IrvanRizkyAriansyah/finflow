@@ -9,7 +9,7 @@ import GoogleSignInButton from '@/components/auth/GoogleSignInButton.vue'
     <div class="space-y-4 md:px-6">
       <GoogleSignInButton />
       <p class="text-center text-body-sm text-on-surface-variant">
-        Data disimpan di Google Drive Anda. Aplikasi hanya dapat mengakses file yang dibuatnya sendiri.
+        {{ $t('onboarding.privacy') }}
       </p>
     </div>
   </main>

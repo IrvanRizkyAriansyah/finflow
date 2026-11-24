@@ -4,6 +4,7 @@ import ChartCard from './ChartCard.vue'
 import DonutChart from './DonutChart.vue'
 import { useTransactionAnalytics } from '@/composables/useTransactionAnalytics'
 import { useBalanceVisibility } from '@/composables/useBalanceVisibility'
+import { t } from '../../composables/useI18n.js'
 
 const { expenseBreakdown, incomeBreakdown } = useTransactionAnalytics()
 const { hidden } = useBalanceVisibility()
@@ -11,8 +12,8 @@ const { hidden } = useBalanceVisibility()
 const mode = ref('expense')
 const data = computed(() => (mode.value === 'expense' ? expenseBreakdown.value : incomeBreakdown.value))
 const TABS = [
-  { id: 'expense', label: 'Pengeluaran' },
-  { id: 'income', label: 'Pemasukan' },
+  { id: 'expense', label: t('common.expense') },
+  { id: 'income', label: t('common.income') },
 ]
 </script>
 
