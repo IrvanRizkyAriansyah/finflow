@@ -10,7 +10,7 @@ export default {
   'common.category': 'Category', 'common.wallet': 'Wallet',
   'common.income': 'Income', 'common.expense': 'Expenses', 'common.net': 'Net',
   'common.remaining': 'Remaining', 'common.available': 'Available', 'common.transaction': 'Transaction',
-  'common.today': 'Today', 'common.all': 'All', 'common.other': 'Other',
+  'common.today': 'Today', 'common.yesterday': 'Yesterday', 'common.all': 'All', 'common.other': 'Other',
   'common.uncategorized': 'Uncategorized', 'common.total': 'Total', 'common.of': 'of',
   'common.from': 'From', 'common.to': 'To',
   'common.copy': 'Copy', 'common.copied': 'Copied', 'common.failed': 'Failed', 'common.never': 'Never',
@@ -22,7 +22,7 @@ export default {
 
   'unit.trillion': 'T', 'unit.billion': 'B', 'unit.million': 'M', 'unit.thousand': 'K',
 
-  'nav.home': 'Home', 'nav.transactions': 'Transactions', 'nav.cards': 'Cards', 'nav.profile': 'Profile',
+  'nav.home': 'Home', 'nav.transactions': 'Transactions', 'nav.cards': 'Wallet', 'nav.profile': 'Profile',
   'nav.main': 'Main navigation', 'nav.addTransaction': 'Add Transaction',
 
   'greeting.morning': 'Good morning', 'greeting.afternoon': 'Good afternoon',
@@ -45,7 +45,7 @@ export default {
   'hero.subtitle': 'Track your income and expenses, with your data stored in your own Google Sheets.',
   'onboarding.privacy': 'Your data is stored in your Google Drive. The app can only access files it created itself.',
 
-  'dash.totalBalance': 'Total Balance', 'dash.cards': 'Cards', 'dash.topUp': 'Top Up', 'dash.send': 'Send',
+  'dash.totalBalance': 'Total Balance', 'dash.cards': 'Wallets', 'dash.topUp': 'Top Up', 'dash.send': 'Send',
   'dash.quickSend': 'Quick Send', 'dash.recent': 'Recent Transactions',
 
   'contact.noAccounts': 'No account numbers yet. Click "Edit" to add one.',
@@ -86,7 +86,7 @@ export default {
   'card.totalIncome': 'Total Income', 'card.totalSpending': 'Total Spending',
   'card.legend': 'Last 7 days · light: income, dark: expenses',
 
-  'period.7d': '7 Days', 'period.1m': '1 Month', 'period.3m': '3 Months', 'period.custom': 'Custom',
+  'period.today':'Today', 'period.7d': '7 Days', 'period.1m': '1 Month', 'period.3m': '3 Months', 'period.custom': 'Custom',
   'period.name.7d': 'Last 7 days', 'period.name.1m': 'Last 1 month',
   'period.name.3m': 'Last 3 months', 'period.name.custom': 'Custom range',
   'period.label': 'Period', 'period.summary': '{name} · {range} · {days} days',

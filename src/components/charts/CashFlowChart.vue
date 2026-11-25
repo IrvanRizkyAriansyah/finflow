@@ -16,7 +16,7 @@ const label = (m) => `${m.long}: pemasukan ${money(m.income)}, pengeluaran ${mon
 
 <template>
   <p v-if="!hasData" class="py-10 text-center text-body-sm text-on-surface-variant">
-    Belum ada transaksi dalam 6 bulan terakhir.
+    {{ $t('cash.empty') }}
   </p>
 
   <div v-else>

@@ -28,14 +28,13 @@ const editWallet = (wallet) => { walletEditing.value = wallet; walletOpen.value 
       <!-- Main Content -->
       <div class="min-w-0 space-y-gutter-mobile md:col-span-7 md:space-y-gutter">
         <BalanceCard />
-        <CardsCarousel editable @select="editWallet" />
+        <CardsCarousel />
         <WalletFormModal v-model="walletOpen" :wallet="walletEditing" />
         <GoalsSection />
       </div>
 
       <!-- Sidebar -->
       <div class="min-w-0 space-y-gutter-mobile md:col-span-5 md:space-y-gutter">
-        <QuickActions />
         <QuickSendContacts />
 
         <section class="w-full min-w-0 rounded-xl bg-surface-container-lowest p-5 shadow-sm">

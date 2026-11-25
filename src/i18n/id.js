@@ -10,7 +10,7 @@ export default {
   'common.category': 'Kategori', 'common.wallet': 'Dompet',
   'common.income': 'Pemasukan', 'common.expense': 'Pengeluaran', 'common.net': 'Selisih',
   'common.remaining': 'Sisa', 'common.available': 'Tersedia', 'common.transaction': 'Transaksi',
-  'common.today': 'Hari ini', 'common.all': 'Semua', 'common.other': 'Lainnya',
+  'common.today': 'Hari ini', 'common.yesterday': 'Kemarin  ', 'common.all': 'Semua', 'common.other': 'Lainnya',
   'common.uncategorized': 'Tanpa kategori', 'common.total': 'Total', 'common.of': 'dari',
   'common.from': 'Dari', 'common.to': 'Sampai',
   'common.copy': 'Salin', 'common.copied': 'Tersalin', 'common.failed': 'Gagal', 'common.never': 'Belum pernah',
@@ -22,7 +22,7 @@ export default {
 
   'unit.trillion': 'T', 'unit.billion': 'M', 'unit.million': 'jt', 'unit.thousand': 'rb',
 
-  'nav.home': 'Beranda', 'nav.transactions': 'Transaksi', 'nav.cards': 'Kartu', 'nav.profile': 'Profil',
+  'nav.home': 'Beranda', 'nav.transactions': 'Transaksi', 'nav.cards': 'Dompet', 'nav.profile': 'Profil',
   'nav.main': 'Navigasi utama', 'nav.addTransaction': 'Tambah Transaksi',
 
   'greeting.morning': 'Selamat pagi', 'greeting.afternoon': 'Selamat siang',
@@ -45,7 +45,7 @@ export default {
   'hero.subtitle': 'Catat pemasukan dan pengeluaran, dengan data tersimpan di Google Sheets milik Anda sendiri.',
   'onboarding.privacy': 'Data disimpan di Google Drive Anda. Aplikasi hanya dapat mengakses file yang dibuatnya sendiri.',
 
-  'dash.totalBalance': 'Total Saldo', 'dash.cards': 'Kartu', 'dash.topUp': 'Isi Saldo', 'dash.send': 'Kirim',
+  'dash.totalBalance': 'Total Saldo', 'dash.cards': 'Dompet', 'dash.topUp': 'Isi Saldo', 'dash.send': 'Kirim',
   'dash.quickSend': 'Kirim Cepat', 'dash.recent': 'Transaksi Terbaru',
 
   'contact.noAccounts': 'Belum ada nomor rekening. Klik "Ubah" untuk menambahkannya.',
@@ -63,7 +63,7 @@ export default {
 
   'wallet.cash': 'Tunai', 'wallet.bank': 'Rekening Bank', 'wallet.debit': 'Kartu Debit',
   'wallet.credit': 'Kartu Kredit', 'wallet.ewallet': 'E-Wallet',
-  'wallet.type': 'Jenis', 'wallet.balance': 'Saldo',
+  'wallet.type': 'Jenis', 'wallet.balance': 'Saldo Awal',
   'wallet.balanceHint': 'Saldo sebelum transaksi pertama dicatat di aplikasi.',
   'wallet.inUse': 'Dipakai {n} transaksi, jadi belum bisa dihapus.',
   'wallet.minOne': 'Minimal harus ada satu dompet.',
@@ -86,7 +86,7 @@ export default {
   'card.totalIncome': 'Total Pemasukan', 'card.totalSpending': 'Total Pengeluaran',
   'card.legend': '7 hari terakhir · terang: pemasukan, gelap: pengeluaran',
 
-  'period.7d': '7 Hari', 'period.1m': '1 Bulan', 'period.3m': '3 Bulan', 'period.custom': 'Kustom',
+  'period.today':'Hari ini','period.7d': '7 Hari', 'period.1m': '1 Bulan', 'period.3m': '3 Bulan', 'period.custom': 'Kustom',
   'period.name.7d': '7 hari terakhir', 'period.name.1m': '1 bulan terakhir',
   'period.name.3m': '3 bulan terakhir', 'period.name.custom': 'Rentang kustom',
   'period.label': 'Periode', 'period.summary': '{name} · {range} · {days} hari',

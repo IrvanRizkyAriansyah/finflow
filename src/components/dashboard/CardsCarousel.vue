@@ -28,7 +28,7 @@ const { hidden } = useBalanceVisibility()
       v-else
       :class="stacked
         ? 'grid gap-4 sm:grid-cols-2 xl:grid-cols-3'
-        : 'hide-scrollbar -mx-margin-mobile flex snap-x snap-mandatory gap-4 overflow-x-auto px-margin-mobile md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0'"
+        : 'hide-scrollbar -mx-margin-mobile flex snap-mandatory gap-4 overflow-x-auto px-margin-mobile md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0'"
     >
       <BankCard
         v-for="w in walletsWithBalance" :key="w.id"

@@ -84,7 +84,7 @@ function onKey(e) {
       </div>
     </dl>
     <p v-else class="mt-3 text-center text-label-sm text-on-surface-variant">
-      Geser atau ketuk grafik untuk melihat rincian.
+      {{ $t('timeline.hint') }}
     </p>
   </div>
 </template>

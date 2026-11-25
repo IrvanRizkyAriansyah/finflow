@@ -20,10 +20,10 @@ const TABS = [
 <template>
   <ChartCard title="Per kategori" subtitle="Pada periode terpilih">
     <template #action>
-      <div class="flex shrink-0 gap-1 rounded-lg bg-surface-container p-1" role="group" aria-label="Jenis kategori">
+      <div class="flex shrink-0 gap-1 rounded-lg bg-surface-container p-1 max-sm:w-full" role="group" aria-label="Jenis kategori">
         <button
           v-for="t in TABS" :key="t.id" type="button"
-          class="rounded-md px-3 py-1 text-label-sm"
+          class="rounded-md px-3 py-1 text-label-sm max-sm:w-full"
           :class="mode === t.id ? 'bg-surface-container-lowest shadow-sm' : 'text-on-surface-variant'"
           :aria-pressed="mode === t.id"
           @click="mode = t.id"

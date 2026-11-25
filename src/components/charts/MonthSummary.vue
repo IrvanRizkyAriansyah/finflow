@@ -28,8 +28,8 @@ function deltaClass(t) {
 <template>
   <section>
     <h2 class="mb-3 text-headline-sm">{{ $t('summary.title', { label: s.label }) }}</h2>
-    <div class="grid grid-cols-3 gap-3">
-      <div v-for="t in tiles" :key="t.key" class="min-w-0 rounded-xl bg-surface-container-lowest p-3 shadow-sm sm:p-4">
+    <div class="grid md:grid-cols-3 grid-cols-2 gap-3">
+      <div v-for="t in tiles" :key="t.key" class="min-w-0 rounded-xl bg-surface-container-lowest p-3 shadow-sm sm:p-4" :class="t.key === 'net' ? 'col-span-2 md:col-span-1' : ''">
         <div class="flex items-center gap-1 text-label-sm text-on-surface-variant">
           <AppIcon :name="t.icon" /> <span class="truncate">{{ t.label }}</span>
         </div>

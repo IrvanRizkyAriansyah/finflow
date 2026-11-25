@@ -52,7 +52,7 @@ const onLeave = (e) => { if (e.pointerType === 'mouse') active.value = null }
       </div>
       <p v-if="!hidden" class="shrink-0 text-right text-body-sm font-semibold" :class="change >= 0 ? 'text-primary' : 'text-error'">
         {{ change >= 0 ? '+' : '-' }}{{ formatCompactCurrency(Math.abs(change)) }}
-        <span class="block text-label-sm font-normal text-on-surface-variant">dari awal periode</span>
+        <span class="block text-label-sm font-normal text-on-surface-variant">{{$t('trend.sinceStart')}}</span>
       </p>
     </div>
 

@@ -57,26 +57,26 @@ function remove() {
 <template>
   <form class="space-y-4" @submit.prevent="submit">
     <div v-if="!isEdit">
-      <span class="text-label-md">Pilihan cepat</span>
+      <span class="text-label-md">{{$t('goal.quickPicks')}}</span>
       <div class="mt-2 flex flex-wrap gap-2">
         <button
           v-for="p in GOAL_PRESETS" :key="p.name" type="button"
           class="rounded-full bg-surface-container px-3 py-1.5 text-label-sm"
           @click="applyPreset(p)"
-        >{{ p.name }}</button>
+        >{{ $t(p.nameKey) }}</button>
       </div>
     </div>
 
     <label class="block">
-      <span class="text-label-md">Nama tujuan</span>
+      <span class="text-label-md">{{ $t('goal.name') }}</span>
       <input
-        v-model="form.name" maxlength="40" placeholder="mis. Dana Darurat"
+        v-model="form.name" maxlength="40" :placeholder="$t('goal.placeholder')"
         class="mt-1 w-full rounded-lg border border-outline-variant bg-transparent px-4 py-3"
       />
     </label>
 
     <label class="block">
-      <span class="text-label-md">Target</span>
+      <span class="text-label-md">{{ $t('goal.target') }}</span>
       <div class="mt-1 flex items-center rounded-lg border border-outline-variant px-4 focus-within:border-primary">
         <span class="text-on-surface-variant">Rp</span>
         <input
@@ -88,7 +88,7 @@ function remove() {
     </label>
 
     <label class="block">
-      <span class="text-label-md">Target tanggal ({{$t('common.optional')}})</span>
+      <span class="text-label-md">{{ $t('goal.targetDateOptional') }}</span>
       <input
         v-model="form.deadline" type="date" :min="isEdit ? undefined : todayStr()"
         class="mt-1 w-full rounded-lg border border-outline-variant bg-transparent px-4 py-3"
@@ -96,7 +96,7 @@ function remove() {
     </label>
 
     <div>
-      <span class="text-label-md">Ikon</span>
+      <span class="text-label-md">{{ $t('common.icon') }}</span>
       <div class="mt-2 grid grid-cols-5 gap-2">
         <button
           v-for="i in GOAL_ICONS" :key="i" type="button" :aria-label="i" :aria-pressed="form.icon === i"
@@ -108,7 +108,7 @@ function remove() {
     </div>
 
     <div>
-      <span class="text-label-md">Warna</span>
+      <span class="text-label-md">{{ $t('common.color') }}</span>
       <div class="mt-2 flex flex-wrap gap-3">
         <button
           v-for="c in GOAL_COLORS" :key="c" type="button" :aria-label="`Warna ${c}`" :aria-pressed="form.color === c"
@@ -132,12 +132,12 @@ function remove() {
         class="flex w-full items-center justify-center gap-2 rounded-xl py-3 text-label-md text-error hover:bg-error-container/40"
         @click="confirmingDelete = true"
       >
-        <AppIcon name="delete" /> Hapus tujuan
+        <AppIcon name="delete" /> {{$t('goal.delete')}}
       </button>
       <div v-else class="space-y-2">
         <p class="text-center text-body-sm">
-          Hapus tujuan ini?
-          <template v-if="saved > 0">Dana <AmountText :value="saved" /> akan kembali ke Saldo tersedia.</template>
+          {{$t('goal.deleteComfirm')}}
+          <template v-if="saved > 0">{{$t('goal.fundsPre')}} <AmountText :value="saved" /> {{$t('goal.fundsPost')}}</template>
         </p>
         <div class="grid grid-cols-2 gap-3">
           <button type="button" class="rounded-xl bg-surface-container py-3 text-label-md" @click="confirmingDelete = false">{{ $t('common.cancel') }}</button>

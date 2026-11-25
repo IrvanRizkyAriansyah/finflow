@@ -10,10 +10,10 @@ const { hidden, toggle } = useBalanceVisibility()
 
 <template>
   <section class="rounded-xl bg-primary p-6 text-on-primary shadow-sm">
-    <div class="flex items-center justify-between">
+    <div class="flex items-start justify-between">
       <p class="text-label-md text-on-primary-container">{{$t('dash.totalBalance')}}</p>
       <button
-        class="rounded-full p-2 hover:bg-white/10 flex"
+        class="rounded-full md:p-2 hover:bg-white/10 flex"
         :aria-label="hidden ? 'Tampilkan saldo' : 'Sembunyikan saldo'"
         :aria-pressed="hidden"
         @click="toggle"

@@ -42,7 +42,7 @@ const groups = computed(() => {
 function dayLabel(date) {
   const today = todayStr()
   if (date === today) return t('common.today')
-  if (date === addDays(today, -1)) return t('common.tomorrow')
+  if (date === addDays(today, -1)) return t('common.yesterday')
   const sameYear = date.slice(0, 4) === today.slice(0, 4)
   return parseDate(date).toLocaleDateString('id-ID', {
     weekday: 'long', day: 'numeric', month: 'long', ...(sameYear ? {} : { year: 'numeric' }),

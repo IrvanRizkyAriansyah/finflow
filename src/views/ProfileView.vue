@@ -51,11 +51,11 @@ async function handleSignOut() {
     <section
       class="space-y-3 rounded-xl bg-surface-container-lowest p-5 shadow-sm"
     >
-      <h2 class="text-headline-sm">Database Google Sheets</h2>
+      <h2 class="text-headline-sm">{{ $t('profile.database') }}</h2>
       <p class="text-body-sm text-on-surface-variant">
-        Sinkron terakhir: {{ syncedText()
+        {{ $t('profile.lastSync') }}: {{ syncedText()
         }}<template v-if="pendingCount">
-          · {{ pendingCount }} menunggu</template
+          · {{ $t(pendingCount,'profile.pending') }}</template
         >
       </p>
       <div class="flex flex-wrap gap-3">
@@ -65,14 +65,14 @@ async function handleSignOut() {
           target="_blank"
           rel="noopener"
           class="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-label-md text-on-primary"
-          ><AppIcon name="open_in_new" /> Buka Spreadsheet</a
+          ><AppIcon name="open_in_new" /> {{ $t('profile.openSheet') }}</a
         >
         <button
           class="flex items-center gap-2 rounded-lg bg-surface-container px-4 py-2 text-label-md disabled:opacity-50"
           :disabled="isSyncing"
           @click="load()"
         >
-          <AppIcon name="sync" /> Sinkronkan
+          <AppIcon name="sync" /> {{ $t('profile.sync') }}
         </button>
       </div>
     </section>
@@ -82,7 +82,7 @@ async function handleSignOut() {
       class="flex items-center justify-between rounded-xl bg-surface-container-lowest p-5 shadow-sm"
     >
       <span class="flex items-center gap-3 text-label-md"
-        ><AppIcon name="savings" /> Tujuan Tabungan</span
+        ><AppIcon name="savings" /> {{ $t('profile.goals') }}</span
       >
       <AppIcon name="chevron_right" />
     </RouterLink>
@@ -92,7 +92,7 @@ async function handleSignOut() {
       class="flex items-center justify-between rounded-xl bg-surface-container-lowest p-5 shadow-sm"
     >
       <span class="flex items-center gap-3 text-label-md"
-        ><AppIcon name="category" /> Kelola Kategori</span
+        ><AppIcon name="category" /> {{ $t('profile.manageCategories') }}</span
       >
       <AppIcon name="chevron_right" />
     </RouterLink>
@@ -101,7 +101,7 @@ async function handleSignOut() {
       class="w-full rounded-xl bg-error-container py-3 font-semibold text-on-error-container"
       @click="handleSignOut"
     >
-      Keluar
+      {{ $t('profile.signOut') }}
     </button>
   </div>
 </template>

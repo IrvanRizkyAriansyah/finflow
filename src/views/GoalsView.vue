@@ -26,11 +26,11 @@ const { hidden } = useBalanceVisibility()
 
     <section class="grid grid-cols-2 gap-3 rounded-xl bg-primary p-5 text-on-primary">
       <div>
-        <p class="text-body-sm text-on-primary-container">Total tabungan</p>
+        <p class="text-body-sm text-on-primary-container">{{$t('goal.totalSaved')}}</p>
         <p class="font-display text-headline-sm"><AmountText :value="totalSaved" :hidden="hidden" /></p>
       </div>
       <div>
-        <p class="text-body-sm text-on-primary-container">Saldo tersedia</p>
+        <p class="text-body-sm text-on-primary-container">{{$t('goal.availableBalance')}}</p>
         <p class="font-display text-headline-sm"><AmountText :value="availableBalance" :hidden="hidden" /></p>
       </div>
     </section>
@@ -39,7 +39,7 @@ const { hidden } = useBalanceVisibility()
       v-if="!goalsWithProgress.length"
       class="rounded-xl bg-surface-container-low p-6 text-center text-body-sm text-on-surface-variant"
     >
-      Belum ada tujuan. Tekan <strong>+ Tujuan</strong> untuk membuat dana darurat, dana pensiun, atau beli HP.
+      {{$t('goal.emptyBefore')}} <strong>{{ $t('goal.addShort') }}</strong> {{$t('goal.emptyAfter')}}
     </p>
     <div v-else class="grid gap-3 md:grid-cols-2">
       <GoalCard v-for="g in goalsWithProgress" :key="g.id" :goal="g" @select="openDetail(g.id)" />

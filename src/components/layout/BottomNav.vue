@@ -14,7 +14,7 @@ const right = NAV_ITEMS.slice(2)
     <div class="relative flex items-center justify-between rounded-full bg-primary px-3 py-2 shadow-lg">
       <RouterLink
         v-for="item in left" :key="item.to" :to="item.to"
-        class="flex flex-col items-center gap-0.5 px-3 py-1 text-label-sm min-w-20"
+        class="flex flex-col items-center gap-0.5 px-1 py-1 text-label-sm w-16"
         :class="isActivePath(route.path, item.to) ? 'text-secondary-container' : 'text-on-primary-container'"
       >
         <AppIcon :name="item.icon" :filled="isActivePath(route.path, item.to)" />
@@ -26,7 +26,7 @@ const right = NAV_ITEMS.slice(2)
 
       <RouterLink
         v-for="item in right" :key="item.to" :to="item.to"
-        class="flex flex-col items-center gap-0.5 px-3 py-1 text-label-sm min-w-20"
+        class="flex flex-col items-center gap-0.5 px-1 py-1 text-label-sm w-16"
         :class="isActivePath(route.path, item.to) ? 'text-secondary-container' : 'text-on-primary-container'"
       >
         <AppIcon :name="item.icon" :filled="isActivePath(route.path, item.to)" />

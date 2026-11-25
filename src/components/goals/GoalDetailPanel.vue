@@ -47,7 +47,7 @@ function removeEntry(id) {
       </span>
       <div class="min-w-0">
         <p class="font-display text-headline-md"><AmountText :value="goal.saved" /></p>
-        <p class="text-body-sm text-on-surface-variant">dari <AmountText :value="goal.target_amount" /></p>
+        <p class="text-body-sm text-on-surface-variant">{{ $t('common.of') }} <AmountText :value="goal.target_amount" /></p>
       </div>
     </div>
 
@@ -77,18 +77,18 @@ function removeEntry(id) {
       <button
         class="rounded-xl bg-primary py-3 text-label-md text-on-primary"
         @click="openEntry(goal.id, 'deposit')"
-      >Setor</button>
+      >{{ $t('goal.deposit') }}</button>
       <button
         class="rounded-xl bg-surface-container py-3 text-label-md disabled:opacity-40"
         :disabled="goal.saved <= 0" @click="openEntry(goal.id, 'withdraw')"
-      >Tarik</button>
+      >{{ $t('goal.withdraw') }}</button>
       <button class="rounded-xl bg-surface-container py-3 text-label-md" @click="openForm(goal)">{{ $t('common.edit') }}</button>
     </div>
 
     <section>
-      <h3 class="mb-1 text-label-md">Riwayat</h3>
+      <h3 class="mb-1 text-label-md">{{ $t('goal.history') }}</h3>
       <p v-if="!entries.length" class="py-4 text-center text-body-sm text-on-surface-variant">
-        Belum ada setoran.
+        {{ $t('goal.noEntries') }}
       </p>
       <ul v-else class="divide-y divide-outline-variant/40">
         <li v-for="e in entries" :key="e.id" class="flex items-center gap-3 py-2">

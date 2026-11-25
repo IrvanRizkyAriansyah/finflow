@@ -6,6 +6,7 @@ import GoalFormPanel from './GoalFormPanel.vue'
 import GoalEntryPanel from './GoalEntryPanel.vue'
 import { useGoalUi } from '@/composables/useGoalUi'
 import { useTransactions } from '@/composables/useTransactions'
+import { t } from '../../composables/useI18n.js'
 
 const { modal, back } = useGoalUi()
 const { goalsWithProgress } = useTransactions()
@@ -19,9 +20,9 @@ const goal = computed(() => {
 const title = computed(() => {
   const m = modal.value
   if (!m) return ''
-  if (m.name === 'detail') return goal.value?.name ?? 'Tujuan'
-  if (m.name === 'entry') return m.type === 'withdraw' ? 'Tarik Dana' : 'Setor Dana'
-  return m.goal ? $t('common.edit')+' Tujuan' : $t('common.add')+'Tujuan'
+  if (m.name === 'detail') return goal.value?.name ?? t('goal.title')
+  if (m.name === 'entry') return m.type === 'withdraw' ? t('goal.modal.withdraw') : t('goal.modal.deposit')
+  return m.goal ? t('common.edit')+' '+t('goal.title') : t('common.add')+' '+t('goal.title')
 })
 </script>
 

@@ -161,7 +161,7 @@ function remove() {
       </label>
 
       <label class="block">
-        <span class="text-label-md">Kategori</span>
+        <span class="text-label-md">{{ $t('common.category') }}</span>
         <div class="relative min-w-0 flex-1">
           <select
             v-model="form.category_id"

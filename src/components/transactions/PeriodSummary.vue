@@ -33,22 +33,22 @@ const tiles = computed(() => [
     goodWhen: "down",
     tone: "text-error",
   },
-  {
-    key: "net",
-    label: t("common.net"),
-    sub:
-      s.value.savingsRate !== null
-        ? t("period.ofIncome", { n: Math.round(s.value.savingsRate * 100) })
-        : t("period.noIncome"),
-  },
-  {
-    key: "avg",
-    label: t("period.avgPerDay"),
-    icon: "calendar_today",
-    value: s.value.avgDailyExpense,
-    tone: "",
-    sub: t("common.txCount", { n: s.value.count }),
-  },
+  // {
+  //   key: "net",
+  //   label: t("common.net"),
+  //   sub:
+  //     s.value.savingsRate !== null
+  //       ? t("period.ofIncome", { n: Math.round(s.value.savingsRate * 100) })
+  //       : t("period.noIncome"),
+  // },
+  // {
+  //   key: "avg",
+  //   label: t("period.avgPerDay"),
+  //   icon: "calendar_today",
+  //   value: s.value.avgDailyExpense,
+  //   tone: "",
+  //   sub: t("common.txCount", { n: s.value.count }),
+  // },
 ]);
 
 function deltaClass(t) {

@@ -5,6 +5,7 @@ import AmountText from '@/components/ui/AmountText.vue'
 import { useBalanceVisibility } from '@/composables/useBalanceVisibility'
 import { formatDate } from '@/utils/formatDate'
 import { formatCurrency } from '@/utils/formatCurrency'
+import { t } from '../../composables/useI18n'
 
 const props = defineProps({ goal: { type: Object, required: true } })
 defineEmits(['select'])
@@ -19,7 +20,7 @@ const status = computed(() => {
   if (g.reached) return 'Target tercapai'
   if (g.overdue) return `Melewati tenggat ${formatDate(g.deadline)}`
   if (g.monthlyNeeded) return `Target ${formatDate(g.deadline)} · ±${money(g.monthlyNeeded)}/bulan`
-  return `Sisa ${money(g.remaining)}`
+  return t('common.remaining')+` ${money(g.remaining)}`
 })
 </script>
 
@@ -39,7 +40,7 @@ const status = computed(() => {
       <div class="min-w-0 flex-1">
         <p class="truncate text-body-md font-semibold">{{ goal.name }}</p>
         <p class="text-body-sm text-on-surface-variant">
-          <AmountText :value="goal.saved" :hidden="hidden" /> dari
+          <AmountText :value="goal.saved" :hidden="hidden" /> {{ $t('common.of') }}
           <AmountText :value="goal.target_amount" :hidden="hidden" />
         </p>
       </div>

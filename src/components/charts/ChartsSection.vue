@@ -40,13 +40,6 @@ const { hidden } = useBalanceVisibility()
         <ChartCard :title="$t('charts.cashFlow')" subtitle="6 bulan terakhir">
           <CashFlowChart :months="monthlyFlow" :hidden="hidden" />
         </ChartCard>
-
-        <ChartCard class="md:col-span-2" :title="$t('charts.balanceTrend')" subtitle="30 hari terakhir">
-          <p v-if="!transactions.length" class="py-10 text-center text-body-sm text-on-surface-variant">
-            {{$t('charts.emptyTrend')}}
-          </p>
-          <BalanceTrendChart v-else :points="balanceTrend" :hidden="hidden" />
-        </ChartCard>
       </div>
     </template>
   </section>

@@ -23,7 +23,7 @@ const shown = computed(() => goalsWithProgress.value.slice(0, 3))
       @click="openForm()"
     >
       <AppIcon name="savings" />
-      <span class="text-body-sm">Mulai menabung untuk tujuan tertentu: dana darurat, pensiun, atau beli HP.</span>
+      <span class="text-body-sm">{{ $t('goal.sectionEmpty') }}</span>
     </button>
 
     <div v-else class="space-y-3">
