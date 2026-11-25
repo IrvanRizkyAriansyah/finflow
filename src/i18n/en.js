@@ -139,6 +139,7 @@ export default {
   'goal.modal.edit': 'Edit Goal', 'goal.modal.new': 'New Goal',
   'goal.preset.emergency': 'Emergency Fund', 'goal.preset.retirement': 'Retirement Fund',
   'goal.preset.phone': 'New Phone', 'goal.preset.vacation': 'Vacation', 'goal.preset.education': 'Education',
+  'goal.addLabel': 'Goal',
 
   'profile.database': 'Google Sheets Database', 'profile.lastSync': 'Last synced: {time}',
   'profile.pending': '· {n} pending', 'profile.openSheet': 'Open Spreadsheet',

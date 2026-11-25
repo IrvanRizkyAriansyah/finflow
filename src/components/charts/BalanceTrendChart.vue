@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { formatCompactCurrency, formatCurrency } from '@/utils/formatCurrency'
 import { formatDate } from '@/utils/formatDate'
+import { shortDate } from '@/utils/dateRange'
 
 const props = defineProps({ points: { type: Array, default: () => [] }, hidden: Boolean })
 
@@ -32,7 +33,6 @@ const shown = computed(() => (active.value !== null ? coords.value[active.value]
 const change = computed(() => (shown.value ? shown.value.balance - coords.value[0].balance : 0))
 
 const money = (v) => (props.hidden ? 'Rp ••••••' : formatCurrency(v))
-const shortDate = (d) => new Date(`${d}T00:00:00`).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })
 
 function onMove(e) {
   const rect = e.currentTarget.getBoundingClientRect()
@@ -47,7 +47,7 @@ const onLeave = (e) => { if (e.pointerType === 'mouse') active.value = null }
   <div v-if="coords.length">
     <div class="flex items-end justify-between gap-3">
       <div class="min-w-0">
-        <p class="text-body-sm text-on-surface-variant">{{ active !== null ? formatDate(shown.date) : 'Saldo hari ini' }}</p>
+        <p class="text-body-sm text-on-surface-variant">{{ active !== null ? formatDate(shown.date) : $t('trend.today') }}</p>
         <p class="truncate font-display text-headline-md">{{ money(shown.balance) }}</p>
       </div>
       <p v-if="!hidden" class="shrink-0 text-right text-body-sm font-semibold" :class="change >= 0 ? 'text-primary' : 'text-error'">
@@ -58,7 +58,7 @@ const onLeave = (e) => { if (e.pointerType === 'mouse') active.value = null }
 
     <div
       class="relative mt-4 h-36 touch-pan-y text-primary"
-      role="img" aria-label="Grafik saldo 30 hari terakhir"
+      role="img" :aria-label="$t('trend.aria')"
       @pointermove="onMove" @pointerdown="onMove" @pointerleave="onLeave"
     >
       <svg :viewBox="`0 0 ${W} ${H}`" preserveAspectRatio="none" class="h-full w-full overflow-visible" aria-hidden="true">
@@ -79,7 +79,7 @@ const onLeave = (e) => { if (e.pointerType === 'mouse') active.value = null }
 
     <div class="mt-2 flex justify-between text-label-sm text-on-surface-variant">
       <span>{{ shortDate(points[0].date) }}</span>
-      <span>Hari ini</span>
+      <span>{{ $t('common.today') }}</span>
     </div>
   </div>
 </template>

@@ -18,9 +18,9 @@ const TABS = [
 </script>
 
 <template>
-  <ChartCard title="Per kategori" subtitle="Pada periode terpilih">
+  <ChartCard :title="$t('breakdown.perCategory')" subtitle="Pada periode terpilih">
     <template #action>
-      <div class="flex shrink-0 gap-1 rounded-lg bg-surface-container p-1 max-sm:w-full" role="group" aria-label="Jenis kategori">
+      <div class="flex shrink-0 gap-1 rounded-lg bg-surface-container p-1 max-sm:w-full" role="group" :aria-label="$t('breakdown.kind')">
         <button
           v-for="t in TABS" :key="t.id" type="button"
           class="rounded-md px-3 py-1 text-label-sm max-sm:w-full"
@@ -32,7 +32,7 @@ const TABS = [
     </template>
 
     <p v-if="!data.segments.length" class="py-10 text-center text-body-sm text-on-surface-variant">
-      Belum ada {{ mode === 'expense' ? 'pengeluaran' : 'pemasukan' }} pada periode ini.
+      {{ $t(mode === 'expense' ? 'common.noExpensePeriod' : 'common.noIncomePeriod') }}
     </p>
     <DonutChart v-else :key="mode" :segments="data.segments" :total="data.total" :hidden="hidden" />
   </ChartCard>

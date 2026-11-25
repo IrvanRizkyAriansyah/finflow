@@ -53,7 +53,7 @@ async function handleSignOut() {
     >
       <h2 class="text-headline-sm">{{ $t('profile.database') }}</h2>
       <p class="text-body-sm text-on-surface-variant">
-        {{ $t('profile.lastSync') }}: {{ syncedText()
+        {{ $t('profile.lastSync',syncedText()) }}{{ syncedText()
         }}<template v-if="pendingCount">
           · {{ $t(pendingCount,'profile.pending') }}</template
         >

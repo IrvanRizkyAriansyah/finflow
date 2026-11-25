@@ -17,12 +17,12 @@ const { open } = useTransactionModal()
       <div class="mb-8 flex items-center gap-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-secondary-container">
           <!-- <AppIcon name="account_balance_wallet" filled /> -->
-           <img src="/logo.svg" :aria-label="$t('nav.main')"/>
+           <img src="/logo.svg" />
         </div>
         <span class="font-display text-headline-sm">FinFlow</span>
       </div>
 
-      <nav class="space-y-1" aria-label="Navigasi utama">
+      <nav class="space-y-1" :aria-label="$t('nav.main')">
         <RouterLink
           v-for="item in NAV_ITEMS" :key="item.to" :to="item.to"
           class="flex items-center gap-3 rounded-lg px-4 py-3 text-label-md transition-colors"

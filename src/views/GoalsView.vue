@@ -15,12 +15,12 @@ const { hidden } = useBalanceVisibility()
 <template>
   <div class="space-y-gutter-mobile md:space-y-gutter">
     <div class="flex items-center justify-between gap-3">
-      <PageHeader title="Tabungan" />
+      <PageHeader :title="$t('goal.savings')" />
       <button
         class="flex items-center gap-1 rounded-full bg-secondary-container px-4 py-2 text-label-md text-on-secondary-container"
         @click="openForm()"
       >
-        <AppIcon name="add" /> Tujuan
+        <AppIcon name="add" /> {{ $t('goal.addLabel') }}
       </button>
     </div>
 

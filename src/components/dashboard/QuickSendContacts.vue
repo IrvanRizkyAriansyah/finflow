@@ -66,7 +66,7 @@ async function record() {
     </div>
 
     <p v-if="!contacts.length" class="mt-2 text-body-sm text-on-surface-variant">
-      Simpan nomor rekening atau VA orang yang sering Anda transfer.
+      {{ $t('contact.emptyHint') }}
     </p>
 
     <ContactDetailModal v-model="detailOpen" :contact="selected" @edit="edit" @record="record" />

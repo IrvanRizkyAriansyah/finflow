@@ -33,7 +33,7 @@ function removeEntry(id) {
 
 <template>
   <div v-if="!goal" class="space-y-4 py-4 text-center">
-    <p class="text-body-sm text-on-surface-variant">Tujuan ini sudah tidak ada.</p>
+    <p class="text-body-sm text-on-surface-variant">{{ $t('goal.notFound') }}</p>
     <button class="rounded-xl bg-surface-container px-6 py-3 text-label-md" @click="close">{{ $t('common.close') }}</button>
   </div>
 
@@ -60,13 +60,13 @@ function removeEntry(id) {
       </div>
       <div class="mt-1 flex justify-between text-body-sm text-on-surface-variant">
         <span>{{ percent }}%</span>
-        <span v-if="goal.reached" class="font-semibold text-primary">Target tercapai</span>
-        <span v-else>Sisa <AmountText :value="goal.remaining" /></span>
+        <span v-if="goal.reached" class="font-semibold text-primary">{{ $t('goal.reached') }}</span>
+        <span v-else>{{ $t('common.remaining') }} <AmountText :value="goal.remaining" /></span>
       </div>
     </div>
 
     <div v-if="goal.deadline" class="rounded-lg bg-surface-container-low p-3 text-body-sm">
-      <p>Target tanggal: <strong>{{ formatDate(goal.deadline) }}</strong></p>
+      <p>{{ $t('goal.targetDate') }}: <strong>{{ formatDate(goal.deadline) }}</strong></p>
       <p v-if="goal.monthlyNeeded" class="mt-1">
         Perlu menabung ±<strong>{{ formatCurrency(goal.monthlyNeeded) }}</strong> per bulan.
       </p>

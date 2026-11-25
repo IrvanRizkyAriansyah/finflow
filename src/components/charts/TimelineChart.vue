@@ -45,7 +45,7 @@ function onKey(e) {
 
     <div
       class="relative touch-pan-y rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-      tabindex="0" role="img" aria-label="Grafik pemasukan dan pengeluaran. Gunakan tombol panah untuk memilih periode."
+      tabindex="0" role="img" :aria-label="$t('timeline.aria')"
       @pointermove="pick" @pointerdown="pick" @pointerleave="leave" @keydown="onKey"
     >
       <div class="pointer-events-none absolute inset-x-0 bottom-6 top-0 flex flex-col justify-between" aria-hidden="true">
@@ -75,11 +75,11 @@ function onKey(e) {
         <dd class="font-semibold text-primary">{{ money(current.income) }}</dd>
       </div>
       <div class="min-w-0">
-        <dt class="text-label-sm text-on-surface-variant">Pengeluaran</dt>
+        <dt class="text-label-sm text-on-surface-variant">{{ $t('common.expense') }}</dt>
         <dd class="font-semibold text-error">{{ money(current.expense) }}</dd>
       </div>
       <div class="min-w-0">
-        <dt class="text-label-sm text-on-surface-variant">Selisih</dt>
+        <dt class="text-label-sm text-on-surface-variant">{{ $t('common.net') }}</dt>
         <dd class="font-semibold" :class="current.net >= 0 ? 'text-primary' : 'text-error'">{{ money(current.net) }}</dd>
       </div>
     </dl>

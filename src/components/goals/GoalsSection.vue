@@ -13,7 +13,7 @@ const shown = computed(() => goalsWithProgress.value.slice(0, 3))
 <template>
   <section>
     <div class="mb-3 flex items-center justify-between">
-      <h2 class="text-headline-sm">Tabungan</h2>
+      <h2 class="text-headline-sm">{{ $t('goal.savings') }}</h2>
       <RouterLink to="/goals" class="text-label-md text-primary">{{$t('common.viewAll')}}</RouterLink>
     </div>
 

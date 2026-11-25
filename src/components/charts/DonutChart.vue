@@ -30,7 +30,7 @@ const pct = (p) => (p < 1 ? '<1%' : `${Math.round(p)}%`)
 <template>
   <div class="flex flex-col items-center gap-5">
     <div class="relative h-40 w-40 shrink-0">
-      <svg viewBox="0 0 100 100" class="h-full w-full -rotate-90" role="img" aria-label="Diagram pengeluaran per kategori">
+      <svg viewBox="0 0 100 100" class="h-full w-full -rotate-90" role="img" :aria-label="$t('donut.aria')">
         <circle cx="50" cy="50" r="38" fill="none" stroke-width="14" class="stroke-surface-container" />
         <circle
           v-for="a in arcs" :key="a.id"
@@ -41,7 +41,7 @@ const pct = (p) => (p < 1 ? '<1%' : `${Math.round(p)}%`)
         />
       </svg>
       <div class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-        <span class="max-w-full truncate text-label-sm text-on-surface-variant">{{ focus ? focus.label : 'Total' }}</span>
+        <span class="max-w-full truncate text-label-sm text-on-surface-variant">{{ focus ? focus.label : $t('common.total') }}</span>
         <span class="font-display text-headline-sm">{{ compact(focus ? focus.value : total) }}</span>
         <span v-if="focus" class="text-label-sm text-on-surface-variant">{{ pct(focus.percent) }}</span>
       </div>

@@ -23,7 +23,7 @@ const barHeight = (v) => (max.value > 0 && v > 0 ? `${Math.max(4, (v / max.value
       <button
         v-for="(d, i) in days" :key="d.short" type="button"
         class="flex h-full min-w-0 flex-1 flex-col"
-        :aria-pressed="sel === i" :aria-label="`${d.long}: rata-rata ${money(d.avg)}`"
+        :aria-pressed="sel === i" :aria-label="`${d.long}: {{ $t('weekday.avg', { value: money(shown.avg) }) }}}`"
         @click="sel = sel === i ? null : i"
       >
         <span
@@ -41,8 +41,8 @@ const barHeight = (v) => (max.value > 0 && v > 0 ? `${Math.max(4, (v / max.value
     </div>
 
     <p v-if="shown" class="mt-3 rounded-lg bg-surface-container-low p-3 text-body-sm">
-      <strong>{{ shown.long }}</strong>: rata-rata {{ money(shown.avg) }} per hari
-      <span class="text-on-surface-variant">({{ shown.count }} hari, total {{ money(shown.total) }})</span>
+      <strong>{{ shown.long }}</strong>{{ $t('weekday.avg', { value: money(shown.avg) }) }}
+      <span class="text-on-surface-variant">{{ $t('weekday.detail', { n: shown.count, total: money(shown.total) }) }}</span>
     </p>
   </div>
 </template>

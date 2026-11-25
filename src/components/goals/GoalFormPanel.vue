@@ -136,7 +136,7 @@ function remove() {
       </button>
       <div v-else class="space-y-2">
         <p class="text-center text-body-sm">
-          {{$t('goal.deleteComfirm')}}
+          {{ $t('goal.deleteConfirm') }}
           <template v-if="saved > 0">{{$t('goal.fundsPre')}} <AmountText :value="saved" /> {{$t('goal.fundsPost')}}</template>
         </p>
         <div class="grid grid-cols-2 gap-3">

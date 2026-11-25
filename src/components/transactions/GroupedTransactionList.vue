@@ -43,10 +43,7 @@ function dayLabel(date) {
   const today = todayStr()
   if (date === today) return t('common.today')
   if (date === addDays(today, -1)) return t('common.yesterday')
-  const sameYear = date.slice(0, 4) === today.slice(0, 4)
-  return parseDate(date).toLocaleDateString('id-ID', {
-    weekday: 'long', day: 'numeric', month: 'long', ...(sameYear ? {} : { year: 'numeric' }),
-  })
+  return parseDate(date).dateLocale()
 }
 </script>
 
@@ -56,7 +53,7 @@ function dayLabel(date) {
   </div>
 
   <p v-else-if="!items.length" class="py-8 text-center text-body-sm text-on-surface-variant">
-    Tidak ada transaksi pada periode ini.
+    {{ $t('common.noTxPeriod')}}
   </p>
 
   <div v-else class="space-y-4">
