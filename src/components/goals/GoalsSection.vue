@@ -27,7 +27,8 @@ const shown = computed(() => goalsWithProgress.value.slice(0, 3))
     </button>
 
     <div v-else class="space-y-3">
-      <GoalCard v-for="g in shown" :key="g.id" :goal="g" @select="openDetail(g.id)" />
+       <!-- @select="openDetail(g.id)" -->
+      <GoalCard v-for="g in shown" :key="g.id" :goal="g"  />
     </div>
   </section>
 </template>
