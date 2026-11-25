@@ -139,6 +139,7 @@ export default {
   'goal.modal.edit': 'Ubah Tujuan', 'goal.modal.new': 'Tujuan Baru',
   'goal.preset.emergency': 'Dana Darurat', 'goal.preset.retirement': 'Dana Pensiun',
   'goal.preset.phone': 'Beli HP', 'goal.preset.vacation': 'Liburan', 'goal.preset.education': 'Pendidikan',
+  'goal.addLabel': 'Tujuan',
 
   'profile.database': 'Database Google Sheets', 'profile.lastSync': 'Sinkron terakhir: {time}',
   'profile.pending': '· {n} menunggu', 'profile.openSheet': 'Buka Spreadsheet',

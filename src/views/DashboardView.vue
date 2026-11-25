@@ -51,6 +51,6 @@ const editWallet = (wallet) => { walletEditing.value = wallet; walletOpen.value 
 
     </div>
 
-    <ChartsSection />
+    <!-- <ChartsSection />  -->
   </div>
 </template>
