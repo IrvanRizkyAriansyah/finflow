@@ -19,6 +19,7 @@ export default {
   'common.noTxPeriod': 'No transactions in this period.',
   'common.noExpensePeriod': 'No expenses in this period.',
   'common.noIncomePeriod': 'No income in this period.',
+  'common.done':'Done',
 
   'unit.trillion': 'T', 'unit.billion': 'B', 'unit.million': 'M', 'unit.thousand': 'K',
 
@@ -167,4 +168,12 @@ export default {
   'err.deleteNegative': 'Cannot delete: savings in this goal would become negative.',
   'err.deleteInsufficient': 'Cannot delete: available balance is not enough to reverse this withdrawal.',
   'err.tabNotFound': 'Tab "{name}" was not found in the spreadsheet.',
+
+  'nav.analytics': 'Analytics',
+  'analytics.cashFlowSub': 'Income vs expenses per {unit}',
+  'analytics.unit.day': 'day', 'analytics.unit.week': 'week', 'analytics.unit.month': 'month',
+  'analytics.byWalletSub': 'Income and expenses for each wallet',
+  'analytics.topSub': 'Top 5 transactions',
+  'breakdown.subtitle': 'In the selected period',
+  'period.name.today': 'today',
 }

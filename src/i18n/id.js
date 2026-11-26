@@ -19,6 +19,7 @@ export default {
   'common.noTxPeriod': 'Belum ada transaksi pada periode ini.',
   'common.noExpensePeriod': 'Belum ada pengeluaran pada periode ini.',
   'common.noIncomePeriod': 'Belum ada pemasukan pada periode ini.',
+  'common.done':'Selesai',
 
   'unit.trillion': 'T', 'unit.billion': 'M', 'unit.million': 'jt', 'unit.thousand': 'rb',
 
@@ -167,4 +168,12 @@ export default {
   'err.deleteNegative': 'Tidak bisa dihapus: tabungan di tujuan ini akan menjadi negatif.',
   'err.deleteInsufficient': 'Tidak bisa dihapus: saldo tersedia tidak cukup untuk mengembalikan penarikan ini.',
   'err.tabNotFound': 'Tab "{name}" tidak ditemukan di spreadsheet.',
+
+  'nav.analytics': 'Analitik',
+  'analytics.cashFlowSub': 'Pemasukan vs pengeluaran per {unit}',
+  'analytics.unit.day': 'hari', 'analytics.unit.week': 'minggu', 'analytics.unit.month': 'bulan',
+  'analytics.byWalletSub': 'Pemasukan dan pengeluaran tiap dompet',
+  'analytics.topSub': '5 transaksi teratas',
+  'breakdown.subtitle': 'Pada periode terpilih',
+  'period.name.today': 'hari ini',
 }

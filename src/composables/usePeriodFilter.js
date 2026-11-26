@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { todayStr, formatDate } from '@/utils/formatDate'
 import { addDays, addMonths, diffDays } from '@/utils/dateRange'
+import { t } from './useI18n'
 
 export const PRESETS = [
   { id: 'today', label: 'Hari Ini' },
@@ -64,7 +65,7 @@ const rangeLabel = computed(() =>
   `${formatDate(range.value.start)} – ${formatDate(range.value.end)}`
 )
 
-const periodName = computed(() => NAMES[preset.value])
+const periodName = computed(() => t('period.name.' + preset.value))
 
 export function usePeriodFilter() {
   return {

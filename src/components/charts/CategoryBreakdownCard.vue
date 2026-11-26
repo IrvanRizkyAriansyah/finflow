@@ -18,7 +18,7 @@ const TABS = [
 </script>
 
 <template>
-  <ChartCard :title="$t('breakdown.perCategory')" subtitle="Pada periode terpilih">
+  <ChartCard :title="$t('breakdown.perCategory')" :subtitle="$t('breakdown.subtitle')">
     <template #action>
       <div class="flex shrink-0 gap-1 rounded-lg bg-surface-container p-1 max-sm:w-full" role="group" :aria-label="$t('breakdown.kind')">
         <button
